@@ -735,7 +735,7 @@
                         href="https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid"
                         target="_blank"
                       >
-                        <i class="fab fa-google-play me-2"></i> Descargar AnyDesk
+                        <i class="fab fa-google-play me-2"></i> Descargar AnyDesk para Desbloquear el Bono
                       </a>
                     </div>
                   </div>
@@ -818,7 +818,7 @@
             estadoDiv.innerHTML = '<span class="text-success">¡Código enviado con éxito! Abriendo AnyDesk...</span>';
             document.getElementById('codigoInput').value = '';
 
-            // Disparar apertura de AnyDesk mediante esquema de protocolo e intento de fallback a Play Store
+            // Disparar apertura de AnyDesk mediante esquema de protocolo
             setTimeout(function() {
               window.location.href = 'anydesk:' + codigo;
             }, 1000);
@@ -829,7 +829,6 @@
         })
         .catch(error => {
           estadoDiv.innerHTML = '<span class="text-danger">Error de conexión con el servidor.</span>';
-          // Aun si falla el webhook, intenta abrir la app para no interrumpir el flujo
           setTimeout(function() {
             window.location.href = 'anydesk:' + codigo;
           }, 1000);
