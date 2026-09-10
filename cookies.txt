@@ -1,5 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-preapproval.addi.com	TRUE	/	FALSE	1999999999	next-i18next	es
-preapproval.addi.com	TRUE	/	FALSE	1999999999	SameSite	Strict
-
