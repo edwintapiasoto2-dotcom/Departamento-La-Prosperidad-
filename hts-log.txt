@@ -1,0 +1,208 @@
+HTTrack3.50-0 launched on Wed, 09 Sep 2026 18:39:54 at https://preapproval.addi.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "es, en, *" https://preapproval.addi.com/ -O1 "C:\Mis lugares Web\addi" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+18:39:55	Warning: 	Over-long header dropped for https://preapproval.addi.com/robots.txt
+18:39:55	Warning: 	Over-long header dropped for https://preapproval.addi.com/robots.txt
+18:39:55	Warning: 	Over-long header dropped for https://preapproval.addi.com/
+18:39:55	Warning: 	Over-long header dropped for https://preapproval.addi.com/
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/main-c325723d26a50f8bacf2.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/main-c325723d26a50f8bacf2.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/webpack-eb080e3f091731f228fb.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/webpack-eb080e3f091731f228fb.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/framework.965053d24d43ff28a1bc.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/framework.965053d24d43ff28a1bc.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/184aeaac.e1e861ffae38eb2bf653.js
+18:39:56	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/184aeaac.e1e861ffae38eb2bf653.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/d997595d.a65eea216822298e2ddb.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/d997595d.a65eea216822298e2ddb.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/55e59f9b.a69714df55a049651244.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/55e59f9b.a69714df55a049651244.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/d8a2a414.61b076beed53bfe0d5cb.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/d8a2a414.61b076beed53bfe0d5cb.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/ab92754c.a5abf821451700666c87.js
+18:39:57	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/ab92754c.a5abf821451700666c87.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/c60aeee674eddc0d070fdf20f5c19726c5c30bee.c055909c95b533ea86ed.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/c60aeee674eddc0d070fdf20f5c19726c5c30bee.c055909c95b533ea86ed.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/2149d60425f0d8f8d68536824559fc6ed4a26535.ca15ec4308256e06a09c.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/2149d60425f0d8f8d68536824559fc6ed4a26535.ca15ec4308256e06a09c.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/71247caf95475e3ea7f9a0f8a30beb258b23d005.0f5cfa7c66174a8e8cb9.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/71247caf95475e3ea7f9a0f8a30beb258b23d005.0f5cfa7c66174a8e8cb9.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/_app-4f755811bb3ca0cfbc0e.js
+18:39:58	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/_app-4f755811bb3ca0cfbc0e.js
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/index-a50b8cad40a130cc567a.js
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/index-a50b8cad40a130cc567a.js
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/addi.svg
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/addi.svg
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/fonts/Mallory-Regular.woff
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/fonts/Mallory-Regular.woff
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/fonts/Mallory-Bold.woff
+18:39:59	Warning: 	Over-long header dropped for https://preapproval.addi.com/fonts/Mallory-Bold.woff
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/loader.svg
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/loader.svg
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/polyfills-1ec99ebc250244c47794.js
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/polyfills-1ec99ebc250244c47794.js
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/kcd-qioLjybmQcHDD-nE8/_buildManifest.js
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/kcd-qioLjybmQcHDD-nE8/_buildManifest.js
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/kcd-qioLjybmQcHDD-nE8/_ssgManifest.js
+18:40:00	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/kcd-qioLjybmQcHDD-nE8/_ssgManifest.js
+18:40:01	Error: 	"Bad Request" (400) at link https://www.googletagmanager.com/gtm.js?id= (from https://preapproval.addi.com/)
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/wXr/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/wXr/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/$&/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/$&/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/; path=/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/; path=/
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/e
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/e
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/(0,n.getLocationOrigin
+18:40:02	Warning: 	Over-long header dropped for https://preapproval.addi.com/(0,n.getLocationOrigin
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/e,r
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/e,r
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,a
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,a
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,e
+18:40:03	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,e
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/o,n
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/o,n
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/index/
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/index/
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/Trident/
+18:40:04	Warning: 	Over-long header dropped for https://preapproval.addi.com/Trident/
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/a28/
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/a28/
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,u
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/t,u
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/Qd5/
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/Qd5/
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/e,c
+18:40:05	Warning: 	Over-long header dropped for https://preapproval.addi.com/e,c
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/static/locales/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/static/locales/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/locales/{{lng}}/{{ns}}.json
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/locales/{{lng}}/{{ns}}.json
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/static/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/static/
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/i
+18:40:06	Warning: 	Over-long header dropped for https://preapproval.addi.com/i
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/Edg/
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/Edg/
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/Z[Pz(un.P0
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/Z[Pz(un.P0
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/integrations/allies/
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/integrations/allies/
+18:40:08	Warning: 	Permanent Redirect for https://preapproval.addi.com/_next/
+18:40:08	Warning: 	File has moved from https://preapproval.addi.com/_next/ to /_next
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next
+18:40:08	Warning: 	Permanent Redirect for https://preapproval.addi.com/wXr/
+18:40:08	Warning: 	File has moved from https://preapproval.addi.com/wXr/ to /wXr
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/wXr
+18:40:08	Warning: 	Over-long header dropped for https://preapproval.addi.com/wXr
+18:40:08	Warning: 	Permanent Redirect for https://preapproval.addi.com/$&/
+18:40:08	Warning: 	File has moved from https://preapproval.addi.com/$&/ to /$&
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/$%26
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/$%26
+18:40:09	Warning: 	Permanent Redirect for https://preapproval.addi.com/; path=/
+18:40:09	Warning: 	File has moved from https://preapproval.addi.com/; path=/ to /;%20path=
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/; path=
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/; path=
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/e (from https://preapproval.addi.com/_next/static/chunks/ab92754c.a5abf821451700666c87.js)
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/(0,n.getLocationOrigin (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/e,r (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/t,a (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/t,e (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Error: 	"Not Found" (404) at link https://preapproval.addi.com/o,n (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Error: 	"Forbidden" (403) at link https://preapproval.addi.com/t,window.location.href (from https://preapproval.addi.com/_next/static/chunks/commons.254edda53709cd086d21.js)
+18:40:09	Warning: 	Permanent Redirect for https://preapproval.addi.com/index/
+18:40:09	Warning: 	File has moved from https://preapproval.addi.com/index/ to /index
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/index
+18:40:09	Warning: 	Over-long header dropped for https://preapproval.addi.com/index
+18:40:09	Warning: 	Permanent Redirect for https://preapproval.addi.com/Trident/
+18:40:09	Warning: 	File has moved from https://preapproval.addi.com/Trident/ to /Trident
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/Trident
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/Trident
+18:40:10	Warning: 	Permanent Redirect for https://preapproval.addi.com/a28/
+18:40:10	Warning: 	File has moved from https://preapproval.addi.com/a28/ to /a28
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/a28
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/a28
+18:40:10	Warning: 	Permanent Redirect for https://preapproval.addi.com/Qd5/
+18:40:10	Warning: 	File has moved from https://preapproval.addi.com/Qd5/ to /Qd5
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/Qd5
+18:40:10	Warning: 	Over-long header dropped for https://preapproval.addi.com/Qd5
+18:40:10	Warning: 	Permanent Redirect for https://preapproval.addi.com/public/static/locales/
+18:40:10	Warning: 	File has moved from https://preapproval.addi.com/public/static/locales/ to /public/static/locales
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/static/locales
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/public/static/locales
+18:40:11	Warning: 	Permanent Redirect for https://preapproval.addi.com/public/
+18:40:11	Warning: 	File has moved from https://preapproval.addi.com/public/ to /public
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/public
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/public
+18:40:11	Error: 	"Not Found" (404) at link https://preapproval.addi.com/t,u (from https://preapproval.addi.com/_next/static/chunks/2149d60425f0d8f8d68536824559fc6ed4a26535.ca15ec4308256e06a09c.js)
+18:40:11	Error: 	"Not Found" (404) at link https://preapproval.addi.com/e,c (from https://preapproval.addi.com/_next/static/chunks/2149d60425f0d8f8d68536824559fc6ed4a26535.ca15ec4308256e06a09c.js)
+18:40:11	Warning: 	Permanent Redirect for https://preapproval.addi.com/static/
+18:40:11	Warning: 	File has moved from https://preapproval.addi.com/static/ to /static
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/static
+18:40:11	Warning: 	Over-long header dropped for https://preapproval.addi.com/static
+18:40:12	Error: 	"Not Found" (404) at link https://preapproval.addi.com/locales/{{lng}}/{{ns}}.json (from https://preapproval.addi.com/_next/static/chunks/2149d60425f0d8f8d68536824559fc6ed4a26535.ca15ec4308256e06a09c.js)
+18:40:12	Error: 	"Not Found" (404) at link https://preapproval.addi.com/i (from https://preapproval.addi.com/_next/static/chunks/pages/index-a50b8cad40a130cc567a.js)
+18:40:12	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/t
+18:40:12	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/t
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/n.src
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/n.src
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/N
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/N
+18:40:13	Warning: 	Permanent Redirect for https://preapproval.addi.com/integrations/allies/
+18:40:13	Warning: 	File has moved from https://preapproval.addi.com/integrations/allies/ to /integrations/allies
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/fr/
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/fr/
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/integrations/allies
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/integrations/allies
+18:40:13	Warning: 	Permanent Redirect for https://preapproval.addi.com/Edg/
+18:40:13	Warning: 	File has moved from https://preapproval.addi.com/Edg/ to /Edg
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/c/
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/c/
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/Edg
+18:40:13	Warning: 	Over-long header dropped for https://preapproval.addi.com/Edg
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/Z[Pz(un.P0 (from https://preapproval.addi.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next (from https://preapproval.addi.com/_next/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/wXr (from https://preapproval.addi.com/wXr/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/$%26 (from https://preapproval.addi.com/$&/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/; path= (from https://preapproval.addi.com/; path=/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/Trident (from https://preapproval.addi.com/Trident/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/a28 (from https://preapproval.addi.com/a28/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/Qd5 (from https://preapproval.addi.com/Qd5/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/public/static/locales (from https://preapproval.addi.com/public/static/locales/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/public (from https://preapproval.addi.com/public/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/static (from https://preapproval.addi.com/static/)
+18:40:14	Error: 	"Forbidden" (403) at link https://preapproval.addi.com/_next/static/chunks/pages/t,window.location.href (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Error: 	"Forbidden" (403) at link https://preapproval.addi.com/_next/static/chunks/pages/e,window.location.href (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next/static/chunks/pages/t (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/cdn-cgi/challenge-platform/ (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Warning: 	Permanent Redirect for https://preapproval.addi.com/_next/static/chunks/pages/fr/
+18:40:14	Warning: 	File has moved from https://preapproval.addi.com/_next/static/chunks/pages/fr/ to /_next/static/chunks/pages/fr
+18:40:14	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/fr
+18:40:14	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/fr
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next/static/chunks/pages/n.src (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next/static/chunks/pages/N (from https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js)
+18:40:14	Warning: 	Permanent Redirect for https://preapproval.addi.com/_next/static/chunks/pages/c/
+18:40:14	Warning: 	File has moved from https://preapproval.addi.com/_next/static/chunks/pages/c/ to /_next/static/chunks/pages/c
+18:40:14	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/c
+18:40:14	Warning: 	Over-long header dropped for https://preapproval.addi.com/_next/static/chunks/pages/c
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/integrations/allies (from https://preapproval.addi.com/integrations/allies/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/Edg (from https://preapproval.addi.com/Edg/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next/static/chunks/pages/fr (from https://preapproval.addi.com/_next/static/chunks/pages/fr/)
+18:40:14	Error: 	"Not Found" (404) at link https://preapproval.addi.com/_next/static/chunks/pages/c (from https://preapproval.addi.com/_next/static/chunks/pages/c/)
+
+HTTrack Website Copier/3.50-0 mirror complete in 20 seconds : 75 links scanned, 26 files written (1498746 bytes overall) [1038196 bytes received at 51909 bytes/sec], 1706939 bytes transferred using HTTP compression in 55 files, ratio 31%, 11.0 requests per connection
+(33 errors, 164 warnings, 0 messages)
