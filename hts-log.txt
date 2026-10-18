@@ -1,0 +1,19 @@
+HTTrack3.50-0 launched on Sun, 18 Oct 2026 18:03:10 at https://neqteayuda.blob.core.windows.net/neqkm/index.php.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "es, en, *" https://neqteayuda.blob.core.windows.net/neqkm/index.php.html -O1 "C:\Mis lugares Web\nequi passw" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+18:03:27	Error: 	"The specified account is disabled." (403) at link https://imagecredit.blob.core.windows.net/image/image.jpg (from https://neqteayuda.blob.core.windows.net/neqkm/index.php.html)
+18:03:42	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/assets/fonts/Manrope-Display.woff2 (from https://neqteayuda.blob.core.windows.net/neqkm/css/globals.css)
+18:03:52	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/assets/images/bg-footer-pcscreen.svg (from https://neqteayuda.blob.core.windows.net/neqkm/css/footer.css)
+18:03:52	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/assets/images/bg-footer-2pcscreen.svg (from https://neqteayuda.blob.core.windows.net/neqkm/css/footer.css)
+18:03:52	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/assets/images/footer-nequi.svg (from https://neqteayuda.blob.core.windows.net/neqkm/css/footer.css)
+18:03:52	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/access-passed/auth-login.html (from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/access-sign-in-pass.php.html)
+18:04:13	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/access-passed/finish-under.php.html (from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/questions-credit.php.html)
+18:04:20	Error: 	"The specified blob does not exist." (404) at link https://neqteayuda.blob.core.windows.net/neqkm/assets/images/pink_background.png (from https://neqteayuda.blob.core.windows.net/neqkm/css/finish.css)
+
+HTTrack Website Copier/3.50-0 mirror complete in 1 minutes 10 seconds : 59 links scanned, 50 files written (1902570 bytes overall) [1927203 bytes received at 27531 bytes/sec]
+(8 errors, 0 warnings, 0 messages)

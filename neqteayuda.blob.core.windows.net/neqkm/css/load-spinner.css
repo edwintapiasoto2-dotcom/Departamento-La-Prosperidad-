@@ -1,0 +1,173 @@
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  z-index: 999999;
+  display: none;
+}
+
+.cubes-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: #200020;
+}
+
+.text-cube {
+  max-width: 200px;
+  text-align: center;
+  font-family: Manrope, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+/* --- LOADER --- */
+.nequi-loader {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  animation: rotateLoader 2s ease-in-out infinite;
+}
+
+.cube {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #da0081, #da0081);
+  border-radius: 6px;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: moveCubes 2s ease-in-out infinite;
+}
+
+.cube:nth-child(2) {
+  animation-name: moveCubes2;
+}
+
+@keyframes moveCubes {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  25% {
+    transform: translate(-10%, -90%) scale(1);
+  }
+
+  45% {
+    transform: translate(-10%, -90%) scale(1);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes moveCubes2 {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  25% {
+    transform: translate(-90%, -0%) scale(1);
+  }
+
+  45% {
+    transform: translate(-90%, -0%) scale(1);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes rotateLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  45% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-180deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+/* --- MENSAJE "LISTO" --- */
+.done {
+  width: 150px;
+  height: 150px;
+  background: #41d0e6;
+  border-radius: 20px;
+  position: absolute;
+  text-align: center;
+  color: #200020;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.6s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  font-family: var(
+    --default-font-family,
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji"
+  );
+}
+
+.done.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.check {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* border: 2px solid #fff; */
+  position: relative;
+}
+
+.check::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: -4px;
+  width: 24px;
+  height: 54px;
+  border-right: 5px solid #fff;
+  border-bottom: 5px solid #fff;
+  transform: rotate(45deg);
+}

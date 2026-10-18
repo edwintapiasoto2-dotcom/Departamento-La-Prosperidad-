@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+  
+<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/slide.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:33 GMT -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider Infinito</title>
+    <link rel="stylesheet" href="../css/globals.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* background: #f3f3f3; */
+        /* font-family: ; */
+      }
+
+      .slider-slide {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        overflow: hidden;
+        border-radius: 10px;
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+        /* background: red; */
+        padding: 4rem 1rem;
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        overflow: hidden;
+        border-radius: 10px;
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      /* .slide {
+        min-width: 99%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      } */
+      .slide {
+        min-width: 100%; /* mejor que 99% */
+        height: auto; /* deja que crezca según el contenido */
+        display: flex;
+        flex-direction: row; /* 👈 imagen y texto uno al lado del otro */
+        align-items: center; /* centra verticalmente */
+        gap: 1rem; /* espacio entre icon y texto */
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        background: #fff; /* fondo blanco para que el texto se vea bien */
+      }
+
+      .slide .icon img {
+        width: 60px; /* tamaño fijo */
+        height: auto;
+      }
+
+      .slide .text {
+        flex: 1; /* ocupa el resto del espacio */
+      }
+
+      .slide .text .title {
+        font-size: 15px;
+        color: black;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .slide .text .description {
+        font-size: 14px;
+        color: black;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+      /* .slide .icon {
+        display: flex;
+        align-items: center;
+      }
+
+      .slide .text {
+        padding-left: 15px;
+        font-family: Manrope, sans-serif;
+      }
+
+      .slide .text .title {
+        font-size: 15px;
+        color: black;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .slide .text .description {
+        font-size: 15px;
+        color: black;
+        font-weight: 400;
+      } */
+
+      .botones {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+      }
+
+      .btn {
+        width: 50px;
+        height: 50px;
+        transform: translateY(-50%);
+        background: #da0081;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size: 18px;
+        font-size: 20px;
+      }
+
+      .btn.prev {
+        left: 10px;
+      }
+      .btn.next {
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-slide">
+      <div class="botones">
+        <button class="btn prev" id="prev">
+          <img src="../assets/arrow-1.png" width="30px" alt="" />
+        </button>
+        <button class="btn next" id="next">
+          <img
+            src="../assets/arrow-1.png"
+            alt=""
+            width="30px"
+            style="transform: rotate(180deg)"
+          />
+        </button>
+      </div>
+
+      <div class="slider-container">
+        <div class="slider" id="slider">
+          <!-- Clon del último -->
+          <div class="slide">
+            <div class="icon">
+              <img src="../assets/slide-3.svg" alt="" />
+            </div>
+            <div class="text">
+              <div class="title">Elige el día en que quieres pagar</div>
+              <div class="description">
+                Elige el día que más te convenga para pagar tu cuota sin
+                preocupaciones.
+              </div>
+            </div>
+          </div>
+          <!-- Reales -->
+          <div class="slide">
+            <div class="icon">
+              <img src="../assets/slide-1.svg" alt="" />
+            </div>
+            <div class="text">
+              <div class="title">Desembolso en minutos</div>
+              <div class="description">
+                Lo haces desde tu celu 100% digital y sin complicaciones.
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="icon">
+              <img src="../assets/slide-2.svg" alt="" />
+            </div>
+            <div class="text">
+              <div class="title">No necesitas historial crediticio.</div>
+              <div class="description">
+                Tu primer crédito puede ser con Nequi, te ayudamos a construir
+                tu historial crediticio.
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="icon">
+              <img src="../assets/slide-3.svg" alt="" />
+            </div>
+            <div class="text">
+              <div class="title">Elige el día en que quieres pagar</div>
+              <div class="description">
+                Elige el día que más te convenga para pagar tu cuota sin
+                preocupaciones.
+              </div>
+            </div>
+          </div>
+          <!-- Clon del primero -->
+          <div class="slide">
+            <div class="icon">
+              <img src="../assets/slide-1.svg" alt="" />
+            </div>
+            <div class="text">
+              <div class="title">Desembolso en minutos</div>
+              <div class="description">
+                Lo haces desde tu celu 100% digital y sin complicaciones.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const slider = document.getElementById("slider");
+      const slides = document.querySelectorAll(".slide");
+      const next = document.getElementById("next");
+      const prev = document.getElementById("prev");
+
+      let index = 1; // arrancamos en el primer real
+      const slideWidth = slides[0].clientWidth;
+
+      slider.style.transform = `translateX(-${index * slideWidth}px)`;
+
+      function moveToSlide() {
+        slider.style.transition = "transform 0.5s ease";
+        slider.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+
+      next.addEventListener("click", () => {
+        index++;
+        moveToSlide();
+      });
+
+      prev.addEventListener("click", () => {
+        index--;
+        moveToSlide();
+      });
+
+      slider.addEventListener("transitionend", () => {
+        // Si llegamos al clon del final (último índice)
+        if (index === slides.length - 1) {
+          slider.style.transition = "none";
+          index = 1; // volvemos al primer real
+          slider.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+
+        // Si llegamos al clon del inicio (índice 0)
+        if (index === 0) {
+          slider.style.transition = "none";
+          index = slides.length - 2; // último real
+          slider.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+      });
+
+      // Swipe móvil
+      let startX = 0;
+      slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchend", (e) => {
+        let endX = e.changedTouches[0].clientX;
+        if (startX - endX > 50) next.click();
+        else if (endX - startX > 50) prev.click();
+      });
+    </script>
+  </body>
+
+<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/slide.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:38 GMT -->
+</html>

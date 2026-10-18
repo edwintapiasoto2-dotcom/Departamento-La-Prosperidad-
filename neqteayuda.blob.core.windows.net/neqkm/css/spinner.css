@@ -1,0 +1,103 @@
+.loadingContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+    margin-top: 64px;
+}
+
+.loadingContainer .mainSectionContainer {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    position: relative;
+    padding: 60px 0;
+}
+
+.loadingContainer .mainSectionContainer .hero-image{
+    background-image: url(../assets/vigilado-bc.svg);
+    background-repeat: no-repeat;
+    height: 340px;
+    position: absolute;
+    top: 16%;
+    left: 5px;
+    width: 31px;
+    background-size: 45%;
+}
+
+.loadingContainer .mainSectionWrapper{
+    padding: 0;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.loadingContainer .logo_nequi_animado{
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.loadingContainer .logo_nequi_animado img{
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
+
+.loadingContainer .mainSectionWrapper .wait-msg{
+    margin-top: 20px;
+    /* font-size: 1.25rem; */
+    font-weight: 600;
+    color: var(--purple-primary);
+    text-align: center;
+}
+
+.loadingContainer .mainSectionWrapper .info-msg{
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--purple-primary);
+    text-align: center;
+}
+
+.loadingContainer .mainSectionWrapper .warning-msg{
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--purple-primary);
+    text-align: left;
+    max-width: 270px;
+    width: 100%;
+}
+
+.loadingContainer .bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.loadingContainer .bottom img {
+    height: 46px;
+    width: auto;
+}
+
+@media screen and (max-width: 450px) {
+    .loadingContainer .mainSectionWrapper{
+        padding-inline: 25px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .loadingContainer{
+        /* background: url(../assets/background.png) right no-repeat #fbe5f2; */
+    }
+}
