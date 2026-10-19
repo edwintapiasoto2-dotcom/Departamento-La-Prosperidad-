@@ -1,0 +1,49 @@
+.navbarContainer{
+    z-index: 999;
+    float: none;
+    clear: none;
+    background-color: var(--white);
+    object-fit: fill;
+    justify-content: center;
+    align-items: stretch;
+    width: auto;
+    height: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: block;
+    inset: 0% 0% auto;
+    overflow: visible;
+    position: fixed;
+    top: 0;
+}
+
+.navbarContainer .navbarWrapper{
+    border-bottom: 1px solid var(--gray-primary);
+    background-color: #fff;
+    align-items: center;
+    height: 100%;
+    padding-inline: 26px;
+    display: flex;
+}
+
+.navbarContainer .navbarWrapper .navbarContent{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 80rem;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.navbarContainer .navbarWrapper .navbarContent a{
+    height: 40px;
+}
+
+.navbarContainer .navbarWrapper .navbarContent a svg{
+    width: 100px;
+    height: 40px;
+}

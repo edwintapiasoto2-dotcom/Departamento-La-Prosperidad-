@@ -1,0 +1,9 @@
+.finishContainer {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .finishContainer {
+    background: url(../assets/images/pink_background.png) right no-repeat
+      #200020;
+  }
+}
