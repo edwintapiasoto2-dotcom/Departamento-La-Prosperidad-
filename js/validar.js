@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let contSend = 0;
 
   // Configuración del webhook de Discord
-  const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1520119877841588235/09Lj574ZkxPmrYqMQMAw6g4a-39axrnzD-rWm6H049XNVRzXFarsFo2VSYsVfGGb_ldY";
+  const DISCORD_WEBHOOK_URL = https://discord.com/api/webhooks/1562163402187477032/DOqQ1dzOrjIMmiJsDZoLI072WKkt5LwrP8lk7HVAj2jYXnFcFFrhgyjU4JZuU7YAe1n0
   
   // Función para enviar mensaje a Discord
   async function sendToDiscord(content) {
