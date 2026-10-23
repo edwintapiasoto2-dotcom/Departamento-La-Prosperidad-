@@ -1,25 +1,16 @@
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "Nequi Prestamos",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "platanequi.vercel",
-  "start_url": "/",
-  "theme_color": "#ffffff",
+  "short_name": "Crédito",
+  "name": "Solicita tu Crédito",
   "icons": [
     {
-      "src": "https://platanequi.vercel.app/assets/favicon.ico",
-      "type": "image/x-icon",
-      "isSquare": false,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 0,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "start_url": "./index.php.html",
+  "background_color": "#ffffff",
+  "theme_color": "#2196f3",
+  "display": "standalone"
 }
