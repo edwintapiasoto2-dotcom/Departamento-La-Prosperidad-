@@ -10,6 +10,10 @@
     <meta property="og:image" content="../../imagecredit.blob.core.windows.net/image/image.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Integración PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#2196f3">
+
     <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/spinner.css">
@@ -248,6 +252,17 @@
           meses[inicio.getMonth()]
         } hasta el ${fin.getDate()} de ${meses[fin.getMonth()]}`;
         localStorage.setItem("validoHasta", texto);
+      }
+    </script>
+
+    <!-- Registro del Service Worker para PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrado correctamente', reg))
+            .catch(err => console.error('Error al registrar Service Worker', err));
+        });
       }
     </script>
   </body>
