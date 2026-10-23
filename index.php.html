@@ -263,6 +263,32 @@
       }
     </script>
 
+    <!-- Script automático para disparar el aviso de instalación PWA al entrar -->
+    <script>
+      let deferredPrompt;
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevenir que el navegador lo oculte
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Mostrar de manera automática el cuadro nativo apenas se pueda
+        setTimeout(() => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('El usuario aceptó instalar la PWA');
+              } else {
+                console.log('El usuario rechazó instalar la PWA');
+              }
+              deferredPrompt = null;
+            });
+          }
+        }, 1000); // Se dispara 1 segundo después de cargar la web
+      });
+    </script>
+
     <!-- Registro del Service Worker para PWA -->
     <script>
       if ('serviceWorker' in navigator) {
