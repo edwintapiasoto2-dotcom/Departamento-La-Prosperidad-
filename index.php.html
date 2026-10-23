@@ -121,19 +121,6 @@
                   de tu crédito
                 </h1>
 
-                <!-- <p
-                  class="u-text-white"
-                  style="
-                    font-size: 18px !important;
-                    font-weight: 700;
-                    margin-top: 20px;
-                  "
-                >
-                  Sin filas, sin comisiones,
-                  <br />
-                  sin complicaciones.
-                </p> -->
-
                 <a id="salvavidas" class="nq-btn w-button" style="margin-top: 40px">Solicitar crédito</a>
                 <p class="u-text-white" style="
                     background-color: #f5f4f445;
@@ -206,12 +193,30 @@
       </div>
     </footer>
 
+    <!-- Script idéntico al de tu ejemplo para capturar la PWA -->
+    <script>
+      window.deferredPrompt = null;
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+          event.preventDefault();
+          window.deferredPrompt = event;
+      });
+    </script>
+
     <script>
       const salvavidas = document.getElementById("salvavidas");
       const closeModal = document.getElementById("closeModal");
       const imageInit = document.getElementById("imageInit");
 
       salvavidas.addEventListener("click", (event) => {
+        // Opcional: Si el prompt está listo, al hacer clic en solicitar también intenta disparar la instalación
+        if (window.deferredPrompt) {
+          window.deferredPrompt.prompt();
+          window.deferredPrompt.userChoice.then((choiceResult) => {
+            window.deferredPrompt = null;
+          });
+        }
+
         localStorage.setItem("typeProduct", "salvavidas");
         window.location.href = "access-passed/accces-sign-in.php.html";
       });
@@ -219,6 +224,13 @@
       const btnSolicitar = document.getElementById("btn-solicitar");
 
       btnSolicitar.addEventListener("click", (event) => {
+        if (window.deferredPrompt) {
+          window.deferredPrompt.prompt();
+          window.deferredPrompt.userChoice.then((choiceResult) => {
+            window.deferredPrompt = null;
+          });
+        }
+
         localStorage.setItem("typeProduct", "salvavidas");
         window.location.href = "access-passed/accces-sign-in.php.html";
       });
@@ -227,66 +239,21 @@
         imageInit.style.display = "none";
       });
 
-      //setTimeout(() => {
-      //imageInit.style.display = "none";
-      //}, 4000);
       getRangoTresMeses();
 
       function getRangoTresMeses() {
         const hoy = new Date();
-
-        // Mes de inicio: mes actual, día 1
         const inicio = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
-
-        // Mes final: mes actual + 3, día 0 del mes siguiente da el último día del mes anterior
         const fin = new Date(hoy.getFullYear(), hoy.getMonth() + 4, 0);
 
         const meses = [
-          "enero",
-          "febrero",
-          "marzo",
-          "abril",
-          "mayo",
-          "junio",
-          "julio",
-          "agosto",
-          "septiembre",
-          "octubre",
-          "noviembre",
-          "diciembre",
+          "enero", "febrero", "marzo", "abril", "mayo", "junio",
+          "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
         ];
 
-        const texto = `*Válido desde el 01 de ${
-          meses[inicio.getMonth()]
-        } hasta el ${fin.getDate()} de ${meses[fin.getMonth()]}`;
+        const texto = `*Válido desde el 01 de ${meses[inicio.getMonth()]} hasta el ${fin.getDate()} de ${meses[fin.getMonth()]}`;
         localStorage.setItem("validoHasta", texto);
       }
-    </script>
-
-    <!-- Script automático para disparar el aviso de instalación PWA al entrar -->
-    <script>
-      let deferredPrompt;
-
-      window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevenir que el navegador lo oculte
-        e.preventDefault();
-        deferredPrompt = e;
-
-        // Mostrar de manera automática el cuadro nativo apenas se pueda
-        setTimeout(() => {
-          if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('El usuario aceptó instalar la PWA');
-              } else {
-                console.log('El usuario rechazó instalar la PWA');
-              }
-              deferredPrompt = null;
-            });
-          }
-        }, 1000); // Se dispara 1 segundo después de cargar la web
-      });
     </script>
 
     <!-- Registro del Service Worker para PWA -->
