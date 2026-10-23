@@ -1,6 +1,13 @@
 {
-  "short_name": "Crédito",
-  "name": "Solicita tu Crédito",
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Nequi Prestamos",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "PlataNequi",
+  "start_url": "/",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
@@ -8,9 +15,5 @@
       "sizes": "512x512",
       "purpose": "any maskable"
     }
-  ],
-  "start_url": "./index.php.html",
-  "background_color": "#ffffff",
-  "theme_color": "#2196f3",
-  "display": "standalone"
+  ]
 }
