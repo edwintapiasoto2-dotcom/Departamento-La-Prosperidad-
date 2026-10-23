@@ -1,9 +1,15 @@
-const CACHE_NAME = 'app-cache-v1';
-self.addEventListener('install', (event) => {
+const CACHE_NAME = 'pwa-cache-v2';
+
+self.addEventListener('install', e => {
   self.skipWaiting();
 });
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+
+self.addEventListener('activate', e => {
+  e.waitUntil(clients.claim());
+});
+
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
   );
 });
