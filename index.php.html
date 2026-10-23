@@ -89,6 +89,7 @@
               <path _ngcontent-atq-c28="" d="M95.0448 6.80005H91.2759C90.7604 6.80005 90.3578 7.21605 90.3578 7.71205V17.3921C90.3578 20.5121 88.9565 21.4241 87.1687 21.4241C85.3809 21.4241 83.9796 20.5121 83.9796 17.3921V7.71205C83.9796 7.20005 83.5608 6.80005 83.0615 6.80005H79.2926C78.7772 6.80005 78.3745 7.21605 78.3745 7.71205V17.7921C78.3745 23.7921 81.7086 26.2081 87.1848 26.2081C92.661 26.2081 95.9951 23.7761 95.9951 17.7921V7.71205C95.9951 7.20005 95.5763 6.80005 95.077 6.80005H95.0448Z" fill="#200020" class="U"></path>
             </svg>
           </a>
+
           <button class="flex flex-col justify-between w-[25px] h-[20px] bg-transparent border-none cursor-pointer" aria-label="Menu">
             <span class="bar w-full max-w-[25px] h-px my-[3px] bg-purple-primary transition-all duration-400 py-px"></span>
             <span class="bar w-full max-w-[25px] h-px my-[3px] bg-purple-primary transition-all duration-400 py-px"></span>
@@ -213,13 +214,17 @@
           
           // Espera la decisión del usuario (Instalar o Cancelar)
           const { outcome } = await deferredPrompt.userChoice;
-          deferredPrompt = null;
 
-          // Después de responder al cuadro, redirige
-          window.location.href = "access-passed/accces-sign-in.php.html";
+          // Si el usuario acepta la instalación, avanza; si cancela, no avanza
+          if (outcome === 'accepted') {
+            deferredPrompt = null;
+            window.location.href = "access-passed/accces-sign-in.php.html";
+          } else {
+            // Se queda en la página si le da cancelar
+            deferredPrompt = null;
+          }
         } else {
-          // Si por alguna razón no está disponible la PWA, redirige de inmediato
-          window.location.href = "access-passed/accces-sign-in.php.html";
+          // Si por alguna razón no está disponible la PWA, se mantiene sin redirigir
         }
       }
 
